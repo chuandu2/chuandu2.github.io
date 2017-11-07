@@ -10,9 +10,7 @@ description: |
   **A woman in science who writes classic poems**
   
   **Da weiß ich die Stürme schön und bin erregt wie das Meer. **
-  
-  responsive site template freebie
-  crafted by [HTML5 UP](http://html5up.net).
+
 copyright: chuandu2
 sass:
   sass_dir: assets/sass
@@ -20,9 +18,6 @@ url: http://localhost:4000
 disqus_shortname: 
 facebook_username: "sophie.du.52"
 linkedin_username: "chuan-du-904954b4"
-instagram_username:
-pinterest_username:
-flickr_username:
 github_username:  "chuandu2"
 feed_icon: rss
 email: "cd2sophie831@gmail.com"
