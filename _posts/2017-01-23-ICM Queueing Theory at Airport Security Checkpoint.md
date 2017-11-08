@@ -1,8 +1,8 @@
 ---
-Title: "Waiting in Airport Security Checkpoint: A Perspective from Queueing Theory"
+Title: "2017-01-23-ICM Queueing Theory at Airport Security Checkpoint"
 Author: "Chuan (Sophie) Du, Yuan Shen, Fan Wu"
 Categories: Contest Project
-Date: "01/23/2017"
+Date: "1/23/2017"
 ---
 
 This is the Problem D in **2017 Interdisciplinary Contest In Modeling®**, with original problem title "Optimizing the Passenger Throughput at an Airport Security
