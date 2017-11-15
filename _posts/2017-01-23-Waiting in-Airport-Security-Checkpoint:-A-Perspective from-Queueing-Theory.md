@@ -42,6 +42,33 @@ With basic knowledge of queueing theory, we need to specify characteristics of q
 
 - Defining time period as One Hour, partitioning range of passengers in the merit of 0-100, 100-200, 200-300... and so on, and regarding rate of arrival as ratio of number of passengers arriving in a certain periods to total passengers in one day, we analyzed data collected and reach following distribution of arrival rate:
 
+---`R version 3.4.2` Programming---
+  
+```{r}
+#Load Data
+range = read.csv('Range.csv', header=TRUE)
+rate = read.csv('Rate.csv', header=TRUE)
+```
+
+```{r}
+x = range$Range
+y = rate$Rate
+```
+
+```{r}
+plot(x , y, col = 1, pch = 16,
+     xlab = "Number of Passengers", ylab="Rate of Occurence",
+     main="Distribution of Passengers Flow in O'hare Airport",
+     xlim=c(0,2800), ylim=c(0,0.12))     
+lines(lowess(x,y), col = "blue")
+```
+
+---**Output**---
+
+
+
+
+
 
 
 #### 2.2.2 Distribution of Passenger Arrival Over Time
