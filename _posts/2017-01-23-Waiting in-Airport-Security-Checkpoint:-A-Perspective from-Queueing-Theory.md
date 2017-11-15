@@ -64,7 +64,7 @@ lines(lowess(x,y), col = "blue")
 ```
 
 ---**Output**---
-![]({{ "/images/Rplot.png" | "https://github.com/chuandu2/chuandu2.github.io/blob/master" }})
+![]({{ "/images/Rplot.png" | "https://github.com/chuandu2/chuandu2.github.io/blob/master/images/R%20output.png" }})
 
 
 
