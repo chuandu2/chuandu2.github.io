@@ -9,6 +9,7 @@ Date: "1/23/2017"
 This is the Problem D in **2017 Interdisciplinary Contest In Modeling®**, with original problem title "Optimizing the Passenger Throughput at an Airport Security Checkpoint". My team was finally designted as *Meritorious Winner* (top 10%).
 
 ## Summary
+
 - Waiting in airport security checkpoint is a tradition queueing problem in real life. We reflect classical queueing theory, and model passenger flow in security checkpoint based on its main ideas. From reliable data about passenger amount in security checkpoint in each time period, we conduct empirical analysis, and reach the conclusion that passengers’ arrival rate exhibits exponential distribution, and amount of passengers arriving over time in a day shows a bell shape. We incorporate element of incoming passengers, efficiency in checkpoint, and remaining passengers from previous time period, we establish a series of functions, and come up with feasible method in estimating number of passengers demanding service in security checkpoint at each time period of a day.
 
 - Depending on our knowledge of passenger flow, we re-examine current passenger security checking procedure applied by TSA. While guaranteeing the security, we develop two modifications to current procedural model, in order to improve passenger throughout and reduce variance in wait time: the first incorporating into a Bifurcation System, and the second designing a Circular Line-up System. We then compare efficiency of these procedures, and also discuss impact of certain typical cultural norms on their performance.
@@ -29,11 +30,9 @@ This is the Problem D in **2017 Interdisciplinary Contest In Modeling®**, with 
 - In this theory, the performance measure is flexible, and could be designed with reference to aim of research project. The distribution of waiting time and sojourn time --- the waiting time plus the service time --- of a customer is one of significant guages in judging efficiency of queueing procedure. The distribution of number of customers in the system, both including and excluding the one or those in service, could play a crucial role in exhibiting utilization of queueing system. The distribution of busy period of the server can shed inspiring light on the effectiveness of queueing system in ameliorating congestion and coping with rush-hours.
 
 - The fundamental theoretical rule guiding queueing theories is Little's Law, which was established by John Little, stating that the long-term average number of customers in a stable queueing system ***L***, is equal to the long-term average effective arrival rate, **λ**, multiplied by average(arithmetic meaning) time a customer spends in system, ***W***; or, in mathematical expression 
-
 <p align="center">
 L = λW.
 <p/>
-
 
 - The remarkable characteristic of this rule is that, it doesn't depend on specific distribution of arrival distribution, service distribution, service order, or almost everything else in this system. This intuitive law could provide suggestive information about average customer flow in a long run.
 
