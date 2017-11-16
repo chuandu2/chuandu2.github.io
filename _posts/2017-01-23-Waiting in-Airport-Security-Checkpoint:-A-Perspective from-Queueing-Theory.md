@@ -65,7 +65,7 @@ lines(lowess(x,y), col = "blue")
 
 ---**Output**---
 <p align="center">
-<img src="/images/Rplot.png" width = "600">
+<img src="/images/Rplot.png" width = "500">
 </p>
 
 <p align="center">
@@ -75,7 +75,7 @@ lines(lowess(x,y), col = "blue")
 
 #### 2.2.2 Distribution of Passenger Arrival Over Time
 <p align="center">
-<img src="/images/Average number of passengers.png" width = "600">
+<img src="/images/Average number of passengers.png" width = "500">
 </p>
 
 #### 2.2.3 Service Efficiency
@@ -122,30 +122,30 @@ lines(lowess(x,y), col = "blue")
 #### 3.3.1 Theoretical Comparison
 
 <p align="center">
-<img src="/images/proc1.png" width = "250"> <img src="/images/proc2.png" width = "250"> <img src="/images/proc3.png" width = "250">
+<img src="/images/proc1.png" width = "230"> <img src="/images/proc2.png" width = "230"> <img src="/images/proc3.png" width = "230">
 </p>
 
 
 #### 3.3.2 Empirical Comparison
 <p align="center">
-<img src="/images/procedure comparison.png" width = "600">
+<img src="/images/procedure comparison.png" width = "500">
 </p>
 
 
 ## 4 Examination on Impact of Cultural Norms
 ### 4.1 Chinese Cultural Norm —Emphasis on Family
 <p align="center">
-<img src="/images/Chinese norm.png" width = "600">
+<img src="/images/Chinese norm.png" width = "500">
 </p>
 
 ### 4.2 American Cultural Norm — Emphasis on Private Space
 <p align="center">
-<img src="/images/American norm.png" width = "600">
+<img src="/images/American norm.png" width = "500">
 </p>
 
 ### 4.3 Japanese Cultural Norm — Emphasis on Condition of Minorities
 <p align="center">
-<img src="/images/Japanese norm.png" width = "600">
+<img src="/images/Japanese norm.png" width = "500">
 </p>
 
 ## 5 Conclusion
