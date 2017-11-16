@@ -65,12 +65,10 @@ lines(lowess(x,y), col = "blue")
 
 ---**Output**---
 
-![]({{ "/images/Rplot.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/Rplot.png" }})
-
-
-![]({{ "/images/R output.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/R%20output.png" }})
-
 <img src="/images/Rplot.png" class="fit image">
+
+
+<img src="/images/R output.png" class="fit image">
 
 
 #### 2.2.2 Distribution of Passenger Arrival Over Time
