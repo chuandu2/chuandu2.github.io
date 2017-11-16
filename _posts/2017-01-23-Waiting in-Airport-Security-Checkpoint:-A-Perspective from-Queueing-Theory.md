@@ -34,6 +34,7 @@ This is the Problem D in **2017 Interdisciplinary Contest In Modeling®**, with 
 L = λW.
 <p/>
 
+
 - The remarkable characteristic of this rule is that, it doesn't depend on specific distribution of arrival distribution, service distribution, service order, or almost everything else in this system. This intuitive law could provide suggestive information about average customer flow in a long run.
 
 ### 2.2 Queueing Theory for Airport Security Checkpoint Passenger Flow
@@ -193,6 +194,7 @@ to our empirical study in previous sections), and will face relatively less pass
   - Phase 3: when successfully pass all inspections by machine and officers, the passenger can wait in queue and tidy up. Though in reality several people may pack simultaneously, we still assume that one individual has to wait in line until his/her previous individual finishes packing.
   
   - Phase 4: for passengers who cannot pass examinations in Phase 2, or in other words, who are suspected of carrying hazardous items and exerting threat towards flying safety, they have to experience additional scanning in a specified location out of regular security checking zone.
+
 
 <p align="center">
 <img src="/images/model1.png" width = "330">     <img src="/images/process1.png" width = "330">
