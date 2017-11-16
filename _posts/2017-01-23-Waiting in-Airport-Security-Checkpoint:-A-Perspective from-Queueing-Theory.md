@@ -132,19 +132,30 @@ arriving every x thousands people is λexp^(-λx), with rate of arrival **λ = 0
   - Denote P(t) as number of passengers that security checkpoint needs to serve, and S(t) as efficiency of checkpoint in period t, where each S(t) is randomly generated within a certain range. Let R(t) represent number of passengers waiting in line for extremely long time in each period, and establish the relationship as following: 
   
 <p align="center">
-<img src="/images/R(t).png" width = "180">
+<img src="/images/R(t).png" width = "150">
 </p>
 
    - The amount of passengers that security checkpoint has to check equals to the sum of incoming passengers in this period, and passenger experiencing long waiting in last period (due to their extremely long waiting time in line, we could assume that these passengers have to wait until another period before getting safety checking). Thus, we can come up with following series of equations:
 
 <p align="center">
-<img src="/images/equations.png" width = "500">
+<img src="/images/equations.png" width = "590">
 </p>
 
 - Since we have concluded that efficiency of officers in security checkpoint has no clear relationship with time (possibly due to frequent charge shifts), then we may assume efficiency in each time interval t equals to a constant ρ, so with systems of equations stated above, we can get
 
-???????????????????????????????????????
+<p align="center">
+<img src="/images/P(t).png" width = "430">
+</p>
 
+and
+
+<p align="center">
+<img src="/images/R2(t).png" width = "430">
+</p>
+
+- The equations mean that we can estimate passenger flow at airport security checkpoint, and passengers enduring exceedingly long period of waiting of each time period, only with rate of arrival for each time period that we have just generated.
+
+- Based on the our mathematical model and process described above, we generate a series of data concerning arrival rate of passengers in each time period in a day, and construct the following graphs:
 
 <p align="center">
 <img src="/images/1.png" width = "300">     <img src="/images/2.png" width = "300">
@@ -154,15 +165,43 @@ arriving every x thousands people is λexp^(-λx), with rate of arrival **λ = 0
 <img src="/images/3.png" width = "300">     <img src="/images/4.png" width = "300">
 </p>
 
+- According to graphs shown above, passengers flow, and passengers needing to wait long time have strong positive relationship with number incoming passengers in each time period of a day, no matter whether we assume service efficiency constant or not. The airport security checkpoint will confront severe challenge of crowded people flow during time periods when arrival rate of passengers reaches peak (usually 14PM -18PM according
+to our empirical study in previous sections), and will face relatively less passengers in other periods of a day.
+
 ## 3 Procedural Model and Modifications
+
 ### 3.1 Analysis of Current TSA Airport Security Checking Procedure
+
 #### 3.1.1 Generalization and Simplification
+
+- To discuss its pros and cons, and to figure out major reasons for serious retarding in current TSA security check process, we conduct analysis and simplification upon security check procedure. In this simplified version, a passenger is supposed to experience three different “phases” from the moment he/she steps into the airport, to the moment he/she finally finishes all security checking procedure (or unfortunately fails safety checking and is sent into the booth).
+
+  - Phase 1: passengers randomly arrive, waiting in a queue until an officer inspect their documents.
+
+  - Phase 2: passengers follow guidance of an officer of TSA and step into the shortest line, waiting for machine scanning inspection on person and on carried-on luggage.
+  
+    - once passengers arrive at the front of queue, they need first to take off jacket or coat and turn off shoes, and put electronic devices and items in pocket into provided basket.
+
+    - then step through scanning machine and undergo manual scanning by officer.
+
+    - if either passengers or their carried-on luggage is suspicious, they have to be rechecked manually by at least two officers, and during this process, all other passengers lining behind have to wait.
+
+    - after double check, the person or luggage should go back to scanning machine again, and repeat whole process.
+
+    - TSA-pre passengers are supposed to pass the whole phase 2 with higher efficiency than common passengers do.
+    
+  - Phase 3: when successfully pass all inspections by machine and officers, the passenger can wait in queue and tidy up. Though in reality several people may pack simultaneously, we still assume that one individual has to wait in line until his/her previous individual finishes packing.
+  
+  - Phase 4: for passengers who cannot pass examinations in Phase 2, or in other words, who are suspected of carrying hazardous items and exerting threat towards flying safety, they have to experience additional scanning in a specified location out of regular security checking zone.
 
 <p align="center">
 <img src="/images/model1.png" width = "350">     <img src="/images/process1.png" width = "350">
 </p>
 
 #### 3.1.2 Main Reason for Procrastination
+
+
+
 
 ### 3.2 Modifications on Current TSA Airport Security Checking Procedure
 #### 3.2.1 Modification 1: Bifurcation System
