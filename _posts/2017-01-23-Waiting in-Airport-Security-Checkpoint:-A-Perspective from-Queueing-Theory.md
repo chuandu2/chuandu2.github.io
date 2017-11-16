@@ -77,15 +77,8 @@ lines(lowess(x,y), col = "blue")
 
 - For further analysis, we establish the expression for exponential distribution as
 
-
-
-$$f(x) = \lambda e^{-\lambda x}^$$
-
-
-$$I = \int \rho R^{2} dV$$
-
 <p align="center">
-$f(x) = λ exp^(-λx).$
+<img src="/images/exp.png" width = "180">
 <p/>
 
 
