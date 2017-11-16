@@ -48,18 +48,18 @@ L = λW.
 
 ---`R version 3.4.2` Programming---
   
-```{r}
+```r
 #Load Data
 range = read.csv('Range.csv', header=TRUE)
 rate = read.csv('Rate.csv', header=TRUE)
 ```
 
-```{r}
+```r
 x = range$Range
 y = rate$Rate
 ```
 
-```{r}
+```r
 plot(x , y, col = 1, pch = 16,
      xlab = "Number of Passengers", ylab="Rate of Occurence",
      main="Distribution of Passengers Flow in O'hare Airport",
