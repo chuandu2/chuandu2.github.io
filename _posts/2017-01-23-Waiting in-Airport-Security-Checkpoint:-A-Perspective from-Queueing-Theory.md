@@ -64,99 +64,89 @@ lines(lowess(x,y), col = "blue")
 ```
 
 ---**Output**---
+<p align="center">
+<img src="/images/Rplot.png" width = "600">
+</p>
 
-<img src="/images/Rplot.png" class="fit image">
-
-
-<img src="/images/R output.png" class="fit image">
+<p align="center">
+<img src="/images/R output.png" width = "600">
+</p>
 
 
 #### 2.2.2 Distribution of Passenger Arrival Over Time
-
-<img src="/images/Average number of passengers.png" class="fit image">
-
+<p align="center">
+<img src="/images/Average number of passengers.png" width = "600">
+</p>
 
 #### 2.2.3 Service Efficiency
-
-<img src="/images/flow vs extreme.png" class="fit image">
-
-
-
-<img src="/images/rate vs time.png" class="fit image">
-
+<p align="center">
+<img src="/images/flow vs extreme.png" width = "400"><img src="/images/rate vs time.png" width = "400">
+</p>
 
 #### 2.2.4 Service Discipline
 
 ### 2.3 Modeling
 
+<p align="center">
+<img src="/images/1.png" width = "350">     <img src="/images/2.png" width = "350">
+</p>
 
-<img src="/images/1.png" class="fit image">
-
-<img src="/images/2.png" class="fit image">
-
-<img src="/images/3.png" class="fit image">
-
-<img src="/images/4.png" class="fit image">
-
+<p align="center">
+<img src="/images/3.png" width = "350">     <img src="/images/4.png" width = "350">
+</p>
 
 ## 3 Procedural Model and Modifications
 ### 3.1 Analysis of Current TSA Airport Security Checking Procedure
 #### 3.1.1 Generalization and Simplification
 
-<img src="/images/model1.png" class="fit image">
-
-<img src="/images/process1.png" class="fit image">
-
+<p align="center">
+<img src="/images/model1.png" width = "380">     <img src="/images/process1.png" width = "380">
+</p>
 
 #### 3.1.2 Main Reason for Procrastination
 
 ### 3.2 Modifications on Current TSA Airport Security Checking Procedure
 #### 3.2.1 Modification 1: Bifurcation System
 
-<img src="/images/model2.png" class="fit image">
-
-<img src="/images/process2.png" class="fit image">
-
+<p align="center">
+<img src="/images/model2.png" width = "380">      <img src="/images/process2.png" width = "380">
+</p>
 
 #### 3.2.2 Modification 2: Circular Line-up System
 
-<img src="/images/model3.png" class="fit image">
-
-<img src="/images/Process3.JPG" class="fit image">
-
+<p align="center">
+<img src="/images/model3.png" width = "380">      <img src="/images/Process3.JPG" width = "380">
+</p>
 
 ### 3.3 Comparison of Procedural Models
 #### 3.3.1 Theoretical Comparison
 
-<img src="/images/proc1.png" class="fit image">
-
-<img src="/images/proc2.png" class="fit image">
-
-<img src="/images/proc3.png" class="fit image">
-
+<p align="center">
+<img src="/images/proc1.png" width = "280"> <img src="/images/proc2.png" width = "280"> <img src="/images/proc3.png" width = "280">
+</p>
 
 
 #### 3.3.2 Empirical Comparison
-
-<img src="/images/procedure comparison.png" class="fit image">
-
+<p align="center">
+<img src="/images/procedure comparison.png" width = "600">
+</p>
 
 
 ## 4 Examination on Impact of Cultural Norms
 ### 4.1 Chinese Cultural Norm —Emphasis on Family
-
-<img src="/images/Chinese norm.png" class="fit image">
-
+<p align="center">
+<img src="/images/Chinese norm.png" width = "600">
+</p>
 
 ### 4.2 American Cultural Norm — Emphasis on Private Space
-
-<img src="/images/American norm.png" class="fit image">
-
+<p align="center">
+<img src="/images/American norm.png" width = "600">
+</p>
 
 ### 4.3 Japanese Cultural Norm — Emphasis on Condition of Minorities
-
-<img src="/images/Japanese norm.png" class="fit image">
-
+<p align="center">
+<img src="/images/Japanese norm.png" width = "600">
+</p>
 
 ## 5 Conclusion
 
