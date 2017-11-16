@@ -80,7 +80,7 @@ lines(lowess(x,y), col = "blue")
 
 #### 2.2.3 Service Efficiency
 <p align="center">
-<img src="/images/flow vs extreme.png" width = "400"><img src="/images/rate vs time.png" width = "400">
+<img src="/images/flow vs extreme.png" width = "300"><img src="/images/rate vs time.png" width = "300">
 </p>
 
 #### 2.2.4 Service Discipline
@@ -88,11 +88,11 @@ lines(lowess(x,y), col = "blue")
 ### 2.3 Modeling
 
 <p align="center">
-<img src="/images/1.png" width = "350">     <img src="/images/2.png" width = "350">
+<img src="/images/1.png" width = "300">     <img src="/images/2.png" width = "300">
 </p>
 
 <p align="center">
-<img src="/images/3.png" width = "350">     <img src="/images/4.png" width = "350">
+<img src="/images/3.png" width = "300">     <img src="/images/4.png" width = "300">
 </p>
 
 ## 3 Procedural Model and Modifications
@@ -100,7 +100,7 @@ lines(lowess(x,y), col = "blue")
 #### 3.1.1 Generalization and Simplification
 
 <p align="center">
-<img src="/images/model1.png" width = "380">     <img src="/images/process1.png" width = "380">
+<img src="/images/model1.png" width = "350">     <img src="/images/process1.png" width = "350">
 </p>
 
 #### 3.1.2 Main Reason for Procrastination
@@ -109,20 +109,20 @@ lines(lowess(x,y), col = "blue")
 #### 3.2.1 Modification 1: Bifurcation System
 
 <p align="center">
-<img src="/images/model2.png" width = "380">      <img src="/images/process2.png" width = "380">
+<img src="/images/model2.png" width = "350">      <img src="/images/process2.png" width = "350">
 </p>
 
 #### 3.2.2 Modification 2: Circular Line-up System
 
 <p align="center">
-<img src="/images/model3.png" width = "380">      <img src="/images/Process3.JPG" width = "380">
+<img src="/images/model3.png" width = "350">      <img src="/images/Process3.JPG" width = "350">
 </p>
 
 ### 3.3 Comparison of Procedural Models
 #### 3.3.1 Theoretical Comparison
 
 <p align="center">
-<img src="/images/proc1.png" width = "280"> <img src="/images/proc2.png" width = "280"> <img src="/images/proc3.png" width = "280">
+<img src="/images/proc1.png" width = "250"> <img src="/images/proc2.png" width = "250"> <img src="/images/proc3.png" width = "250">
 </p>
 
 
