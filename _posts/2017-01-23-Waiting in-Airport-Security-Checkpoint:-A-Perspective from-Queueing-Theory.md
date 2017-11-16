@@ -33,7 +33,6 @@ This is the Problem D in **2017 Interdisciplinary Contest In Modeling®**, with 
 L = λW.
 <p/>
 
-
 - The remarkable characteristic of this rule is that, it doesn't depend on specific distribution of arrival distribution, service distribution, service order, or almost everything else in this system. This intuitive law could provide suggestive information about average customer flow in a long run.
 
 ### 2.2 Queueing Theory for Airport Security Checkpoint Passenger Flow
@@ -90,20 +89,53 @@ lines(lowess(x,y), col = "blue")
 - Based on information resulted from regression, we figure out that rate of occurrence of
 arriving every x thousands people is λexp^(-λx), with rate of arrival **λ = 0.03404**.
 
-
 #### 2.2.2 Distribution of Passenger Arrival Over Time
+
+- Even though in traditional queueing theory, only certain merit of distribution, such as Exponential Distribution or Erlang Distribution, is assumed and there is basically no conscription of distribution of passengers’ arrival across time, in our scenario, time plays a significantly important role in describing certain passengers’ coming to airport.
+
+- The reason for time’s importance falls on the fact that, unlike in other scenario where customers generally make their choice of participating in a certain service arbitrarily, passengers in airport usually decide when and whether to go to airport depending on their flight information. Since the arrangement of flights in an airport follows certain pattern, the arrival of passengers also exhibits certain trend over time in a day, as shown in following graph:
+
 <p align="center">
 <img src="/images/Average number of passengers.png" width = "500">
 </p>
 
+- The conspicuous bell-shape graph tells us that, the number of passengers arriving airport security checkpoint reaches the peak around 14pm-15pm and 17pm-18pm every day, and that relatively less people coming to airport early in the morning or late in the evening.
+
+- In spite of lesson about distribution of passengers in a day, which guides us in data generating later for our examination of model, this bell-shape graph also precludes us from utilizing Little’s Law in predicting passengers flow in airport security checkpoint. The reason is that, one underlying presumption of Little’s Law is that every single customer makes decision of joining the queue for service or not based merely on current length of waiting line and assumed efficiency of server, and once a customer face the situation where waiting queue is too long or servers act in an exceedingly dilatory characteristic, he/she will generally choose come later of not participate in the service at all.
+
+
+- However, this graph shows that, due to passengers seldom give up their booked flights or endorse tickets because of long security line, even though in some rush hours security checkpoints are extremely crowded, people will still flow into waiting lines and deteriorate the condition in checkpoints. Based on this realization, we have to deviate from Little’s Law, and construct some other approaches in estimating passengers flow.
+
 #### 2.2.3 Service Efficiency
+
+- The service capacity is another crucial element in determining length of waiting lines in airport security checkpoint. We utilize rate of passengers waiting for extremely long time (over 45 minutes) in a certain time interval as the indicator of efficiency of service in airport security checkpoint. Based on same data resource, we construct following graphs:
+
 <p align="center">
 <img src="/images/flow vs extreme.png" width = "300"><img src="/images/rate vs time.png" width = "300">
 </p>
 
+- According to information stated above, we could come up with the idea that efficiency of service in airport security checkpoint is basically exogenous to queueing system. So in our modeling, we grant an arbitrary value to service efficiency, which is generated from analysis on data collected.
+
 #### 2.2.4 Service Discipline
 
+- Despite occasional situation where some passengers who are rushing for their flights that will take off in several minutes, and other passengers allow them to jump into first place in a queue, the service discipline in airport security checkpoint is generally "First In First Out" (FIFO).
+
+- Another special situation is that, when one passenger is suspicious of carrying certain dangerous items, either in his/her carried-on baggage or in his/her own body, he/she will undergo second-round examination and re-pass machine scanner. In our model, to simplify this scenario, we just double the time needed for suspicious passengers to pass security checkpoint, and do not change service discipline for these specific cases.
+
 ### 2.3 Modeling
+
+- Relying on knowledge of characteristics of queueing system in airport security checkpoint, we construct a mathematical model in estimating passengers flow in any given time period. We mainly focus on estimating number of passengers that security checkpoint has to serve in each time interval, and predicting number of passengers waiting extremely long time in every period. The process is as following:
+
+  - Separate a day into several equal time periods (100 in our case), generate arrival rate of passengers for every single period and make sure distribution of arrival rate following Exponential Rate, and then rearrange these rate across time periods to simulate bell-shape distribution of passengers over time in a day. Number of passenger flowing into airport in period t is denoted as I(t).
+
+  - Denote P(t) as number of passengers that security checkpoint needs to serve, and S(t) as efficiency of checkpoint in period t, where each S(t) is randomly generated within a certain range. Let R(t) represent number of passengers waiting in line for extremely long time in each period, and establish the relationship as following:
+
+<p align="center">
+<img src="/images/R(t).png" width = "180">
+</p>
+
+  - The amount of passengers that security checkpoint has to check equals to the sum of incoming passengers in this period, and passenger experiencing long waiting in last period (due to their extremely long waiting time in line, we could assume that these passengers have to wait until another period before getting safety checking). Thus, we can come up with following series of equations:
+
 
 <p align="center">
 <img src="/images/1.png" width = "300">     <img src="/images/2.png" width = "300">
