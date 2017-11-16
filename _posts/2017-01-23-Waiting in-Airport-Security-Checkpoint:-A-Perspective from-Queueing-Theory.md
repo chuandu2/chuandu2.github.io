@@ -136,9 +136,13 @@ arriving every x thousands people is λexp^(-λx), with rate of arrival **λ = 0
 
    - The amount of passengers that security checkpoint has to check equals to the sum of incoming passengers in this period, and passenger experiencing long waiting in last period (due to their extremely long waiting time in line, we could assume that these passengers have to wait until another period before getting safety checking). Thus, we can come up with following series of equations:
 
+<p align="center">
+<img src="/images/equations.png" width = "500">
+</p>
 
+- Since we have concluded that efficiency of officers in security checkpoint has no clear relationship with time (possibly due to frequent charge shifts), then we may assume efficiency in each time interval t equals to a constant ρ, so with systems of equations stated above, we can get
 
-  
+???????????????????????????????????????
 
 
 <p align="center">
