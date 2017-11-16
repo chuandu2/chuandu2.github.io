@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Waiting in Airport Security Checkpoint: A Perspective from Queueing Theory"
 author: "Chuan (Sophie) Du, Yuan Shen, Fan Wu"
 categories: project
