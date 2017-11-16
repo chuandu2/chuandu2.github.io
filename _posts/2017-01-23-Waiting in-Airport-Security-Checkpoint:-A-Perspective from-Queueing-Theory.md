@@ -31,12 +31,12 @@ This is the Problem D in **2017 Interdisciplinary Contest In Modeling®**, with 
 <p align="center">
 L = λW.
 <p/>
+
 - The remarkable characteristic of this rule is that, it doesn't depend on specific distribution of arrival distribution, service distribution, service order, or almost everything else in this system. This intuitive law could provide suggestive information about average customer flow in a long run.
 
 ### 2.2 Queueing Theory for Airport Security Checkpoint Passenger Flow
 
-- Security Checkpoint Passenger Flow}
-With basic knowledge of queueing theory, we need to specify characteristics of queues in airport security checkpoint to establish concrete model for our project. In this attempt, we mainly depend on data of waiting point in Chicago O'hare Airport Terminal 5, from 2016.1.1 to 2016.12.31, and come up with following several important traits of our queueing system.
+- With basic knowledge of queueing theory, we need to specify characteristics of queues in airport security checkpoint to establish concrete model for our project. In this attempt, we mainly depend on data of waiting point in Chicago O'hare Airport Terminal 5, from 2016.1.1 to 2016.12.31, and come up with following several important traits of our queueing system.
 
 #### 2.2.1 Rate of Passenger Arrival
 
@@ -69,6 +69,18 @@ lines(lowess(x,y), col = "blue")
 <p align="center">
 <img src="/images/Rplot.png" width = "500">
 </p>
+
+- Disregarding the outlier of extremely low number of passengers arriving — which usually occurs near the beginning of operation of airport at 4AM or closing of airport operation at 1AM — we can witness an Exponential Distribution of arrival rate, with arrival of passengers around 200-300 in one hour happening most, and number of occurrences deteriorating as range of passengers gradually increasing until 2500+.
+
+- For further analysis, we establish the expression for exponential distribution as
+<p align="center">
+f(x) = λ \exp{-λx}.
+<p/>
+
+
+
+
+
 
 <p align="center">
 <img src="/images/R output.png" width = "600">
