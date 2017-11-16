@@ -64,35 +64,98 @@ lines(lowess(x,y), col = "blue")
 ```
 
 ---**Output**---
+
 ![]({{ "/images/Rplot.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/Rplot.png" }})
 
 
-
-
+![]({{ "/images/R output.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/R%20output.png" }})
 
 
 #### 2.2.2 Distribution of Passenger Arrival Over Time
+
+![]({{ "/images/Average number of passengers.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/Average%20number%20of%20passengers.png" }})
+
+
+
 #### 2.2.3 Service Efficiency
+
+![]({{ "/images/flow vs extreme.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/flow%20vs%20extreme.png" }})
+
+![]({{ "/images/rate vs time.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/rate%20vs%20time.png" }})
+
+
 #### 2.2.4 Service Discipline
 
 ### 2.3 Modeling
 
+
+![]({{ "/images/1.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/1.png" }})
+
+![]({{ "/images/2.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/2.png" }})
+
+![]({{ "/images/3.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/3.png" }})
+
+![]({{ "/images/4.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/4.png" }})
+
+
 ## 3 Procedural Model and Modifications
 ### 3.1 Analysis of Current TSA Airport Security Checking Procedure
 #### 3.1.1 Generalization and Simplification
+
+![]({{ "/images/model1.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/model1.png" }})
+
+![]({{ "/images/process1.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/process1.png" }})
+
+
 #### 3.1.2 Main Reason for Procrastination
 
 ### 3.2 Modifications on Current TSA Airport Security Checking Procedure
 #### 3.2.1 Modification 1: Bifurcation System
+
+![]({{ "/images/model2.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/model2.png" }})
+
+![]({{ "/images/process2.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/process2.png" }})
+
+
 #### 3.2.2 Modification 2: Circular Line-up System
+
+![]({{ "/images/model3.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/model3.png" }})
+
+![]({{ "/images/Process3.JPG" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/Process3.JPG" }})
+
+
 ### 3.3 Comparison of Procedural Models
 #### 3.3.1 Theoretical Comparison
+
+![]({{ "/images/proc1.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/proc1.png" }})
+
+![]({{ "/images/proc2.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/proc2.png" }})
+
+![]({{ "/images/proc3.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/proc3.png" }})
+
+
+
 #### 3.3.2 Empirical Comparison
+
+![]({{ "/images/procedure comparison.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/procedure comparison.png" }})
+
+
 
 ## 4 Examination on Impact of Cultural Norms
 ### 4.1 Chinese Cultural Norm —Emphasis on Family
+
+![]({{ "/images/Chinese norm.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/Chinese norm.png" }})
+
+
 ### 4.2 American Cultural Norm — Emphasis on Private Space
+
+![]({{ "/images/American norm.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/American norm.png" }})
+
+
 ### 4.3 Japanese Cultural Norm — Emphasis on Condition of Minorities
+
+![]({{ "/images/Japanese norm.png" | https://github.com/chuandu2/chuandu2.github.io/blob/master/images/Japanese norm.png" }})
+
 
 ## 5 Conclusion
 
