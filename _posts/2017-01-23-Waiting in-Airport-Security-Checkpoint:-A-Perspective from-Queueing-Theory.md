@@ -80,15 +80,15 @@ lines(lowess(x,y), col = "blue")
 <p align="center">
 <img src="/images/exp.png" width = "180">
 <p/>
-
-
-
-
-
+  
+- Then we run a non-linear least squares regression, getting following result:
 
 <p align="center">
 <img src="/images/R output.png" width = "600">
 </p>
+
+- Based on information resulted from regression, we figure out that rate of occurrence of
+arriving every x thousands people is λexp^(-λx), with rate of arrival **λ = 0.03404**.
 
 
 #### 2.2.2 Distribution of Passenger Arrival Over Time
