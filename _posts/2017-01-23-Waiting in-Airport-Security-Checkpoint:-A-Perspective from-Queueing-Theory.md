@@ -128,13 +128,17 @@ arriving every x thousands people is λexp^(-λx), with rate of arrival **λ = 0
 
   - Separate a day into several equal time periods (100 in our case), generate arrival rate of passengers for every single period and make sure distribution of arrival rate following Exponential Rate, and then rearrange these rate across time periods to simulate bell-shape distribution of passengers over time in a day. Number of passenger flowing into airport in period t is denoted as I(t).
 
-  - Denote P(t) as number of passengers that security checkpoint needs to serve, and S(t) as efficiency of checkpoint in period t, where each S(t) is randomly generated within a certain range. Let R(t) represent number of passengers waiting in line for extremely long time in each period, and establish the relationship as following:
-
+  - Denote P(t) as number of passengers that security checkpoint needs to serve, and S(t) as efficiency of checkpoint in period t, where each S(t) is randomly generated within a certain range. Let R(t) represent number of passengers waiting in line for extremely long time in each period, and establish the relationship as following: 
+  
 <p align="center">
 <img src="/images/R(t).png" width = "180">
 </p>
 
-  - The amount of passengers that security checkpoint has to check equals to the sum of incoming passengers in this period, and passenger experiencing long waiting in last period (due to their extremely long waiting time in line, we could assume that these passengers have to wait until another period before getting safety checking). Thus, we can come up with following series of equations:
+   - The amount of passengers that security checkpoint has to check equals to the sum of incoming passengers in this period, and passenger experiencing long waiting in last period (due to their extremely long waiting time in line, we could assume that these passengers have to wait until another period before getting safety checking). Thus, we can come up with following series of equations:
+
+
+
+  
 
 
 <p align="center">
