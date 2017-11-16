@@ -195,7 +195,7 @@ to our empirical study in previous sections), and will face relatively less pass
   - Phase 4: for passengers who cannot pass examinations in Phase 2, or in other words, who are suspected of carrying hazardous items and exerting threat towards flying safety, they have to experience additional scanning in a specified location out of regular security checking zone.
 
 <p align="center">
-<img src="/images/model1.png" width = "350">     <img src="/images/process1.png" width = "350">
+<img src="/images/model1.png" width = "330">     <img src="/images/process1.png" width = "330">
 </p>
 
 #### 3.1.2 Main Reason for Procrastination
@@ -207,13 +207,13 @@ to our empirical study in previous sections), and will face relatively less pass
 #### 3.2.1 Modification 1: Bifurcation System
 
 <p align="center">
-<img src="/images/model2.png" width = "350">      <img src="/images/process2.png" width = "350">
+<img src="/images/model2.png" width = "330">      <img src="/images/process2.png" width = "330">
 </p>
 
 #### 3.2.2 Modification 2: Circular Line-up System
 
 <p align="center">
-<img src="/images/model3.png" width = "350">      <img src="/images/Process3.JPG" width = "350">
+<img src="/images/model3.png" width = "330">      <img src="/images/Process3.JPG" width = "330">
 </p>
 
 ### 3.3 Comparison of Procedural Models
