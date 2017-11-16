@@ -1,7 +1,7 @@
 ---
-Title: "Waiting in Airport Security Checkpoint: A Perspective from Queueing Theory"
-Author: "Chuan (Sophie) Du, Yuan Shen, Fan Wu"
-Categories: project
+title: "Waiting in Airport Security Checkpoint: A Perspective from Queueing Theory"
+author: "Chuan (Sophie) Du, Yuan Shen, Fan Wu"
+categories: project
 Date: "1/23/2017"
 ---
 
