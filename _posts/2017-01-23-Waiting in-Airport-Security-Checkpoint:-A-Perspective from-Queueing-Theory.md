@@ -122,7 +122,7 @@ lines(lowess(x,y), col = "blue")
 #### 3.3.1 Theoretical Comparison
 
 <p align="center">
-<img src="/images/proc1.png" width = "230"> <img src="/images/proc2.png" width = "230"> <img src="/images/proc3.png" width = "230">
+<img src="/images/proc1.png" width = "210"> <img src="/images/proc2.png" width = "210"> <img src="/images/proc3.png" width = "210">
 </p>
 
 
