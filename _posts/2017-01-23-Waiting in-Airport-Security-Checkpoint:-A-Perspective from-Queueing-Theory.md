@@ -29,7 +29,11 @@ This is the Problem D in **2017 Interdisciplinary Contest In Modeling®**, with 
 
 - In this theory, the performance measure is flexible, and could be designed with reference to aim of research project. The distribution of waiting time and sojourn time --- the waiting time plus the service time --- of a customer is one of significant guages in judging efficiency of queueing procedure. The distribution of number of customers in the system, both including and excluding the one or those in service, could play a crucial role in exhibiting utilization of queueing system. The distribution of busy period of the server can shed inspiring light on the effectiveness of queueing system in ameliorating congestion and coping with rush-hours.
 
-- The fundamental theoretical rule guiding queueing theories is Little's Law, which was established by John Little, stating that the long-term average number of customers in a stable queueing system ***L***, is equal to the long-term average effective arrival rate, **λ**, multiplied by average(arithmetic meaning) time a customer spends in system, ***W***; or, in mathematical expression **L = λW.**
+- The fundamental theoretical rule guiding queueing theories is Little's Law, which was established by John Little, stating that the long-term average number of customers in a stable queueing system ***L***, is equal to the long-term average effective arrival rate, **λ**, multiplied by average(arithmetic meaning) time a customer spends in system, ***W***; or, in mathematical expression:
+
+<p align="center">
+<img src="/images/L.png" width = "120">
+</p>
 
 - The remarkable characteristic of this rule is that, it doesn't depend on specific distribution of arrival distribution, service distribution, service order, or almost everything else in this system. This intuitive law could provide suggestive information about average customer flow in a long run.
 
@@ -76,15 +80,14 @@ lines(lowess(x,y), col = "blue")
 
 <p align="center">
 <img src="/images/exp.png" width = "180">
-<p/>  
->
+</p>  
 
 - Then we run a non-linear least squares regression, getting following result:
 
 <p align="center">
 <img src="/images/R output.png" width = "600">
 </p>
->
+
 
 - Based on information resulted from regression, we figure out that rate of occurrence of
 arriving every x thousands people is λexp^(-λx), with rate of arrival **λ = 0.03404**.
