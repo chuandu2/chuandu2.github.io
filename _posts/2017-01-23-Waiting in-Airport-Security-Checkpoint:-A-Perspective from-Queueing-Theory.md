@@ -342,23 +342,16 @@ pass, they are required to get into additional scanning, and experience more det
 
 ## References
 
-[1] "Airport Wait Times." *Airport Wait Times.* U.S. Customs and Border Protection, n.d. 
-Web. 21 Jan. 2017. *<https : ==awt:cbp:gov=>.*
+[1] "Airport Wait Times." *Airport Wait Times.* U.S. Customs and Border Protection, n.d. Web. 21 Jan. 2017. *<https : ==awt:cbp:gov=>.*
   
-[2] Adan, Ivo, and Jacques Resing. "Queueing Theory." *Queueing Systems*(2015): 7-28.
-26 Mar. 2015.Web. 22 Jan. 2017.
+[2] Adan, Ivo, and Jacques Resing. "Queueing Theory." *Queueing Systems*(2015): 7-28. 26 Mar. 2015.Web. 22 Jan. 2017.
 
-[3] "Queueing Theory." *Wikipedia.* Wikipedia Foundation, 27 Apr. 2002. Web. 22 Jan.
-2017. *< https : ==en:wikipedia:org=wiki=Queueing_theory >.*
+[3] "Queueing Theory." *Wikipedia.* Wikipedia Foundation, 27 Apr. 2002. Web. 22 Jan. 2017. *< https : ==en:wikipedia:org=wiki=Queueing_theory >.*
 
-[4] Bertsekas, Dimitri P. "Networking Tutorials." Traffic Behavior and Queueing in
-a QoS Environment. M.I.T. Department of Electrical Engineering, Boston. 22 Jan.
-2017. Lecture.
+[4] Bertsekas, Dimitri P. "Networking Tutorials." Traffic Behavior and Queueing in a QoS Environment. M.I.T. Department of Electrical Engineering, Boston. 22 Jan. 2017. Lecture.
 
-[5] "Exponential Distribution." *Wikipedia.* Wikipedia Foundation, 15 Mar. 2002.Web. 23
-Jan. 217. *< http : ==en:wikipedia:org=wiki=Exponential_distribution >.*
+[5] "Exponential Distribution." *Wikipedia.* Wikipedia Foundation, 15 Mar. 2002.Web. 23 Jan. 217. *< http : ==en:wikipedia:org=wiki=Exponential_distribution >.*
 
-[6] "Erlang Distribution." *Wikipedia.* Wikipedia Foundation, 20 Mar. 2003. Web. 23 Jan.
-2017. *< https : ==en:wikipedia:org=wiki=Erlang_distribution >.*
+[6] "Erlang Distribution." *Wikipedia.* Wikipedia Foundation, 20 Mar. 2003. Web. 23 Jan. 2017. *< https : ==en:wikipedia:org=wiki=Erlang_distribution >.*
 
 
