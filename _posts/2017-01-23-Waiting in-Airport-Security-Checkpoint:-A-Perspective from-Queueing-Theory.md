@@ -23,6 +23,7 @@ This is the Problem D in **2017 Interdisciplinary Contest In Modeling®**, with 
 
 - Monitoring and predicting the flow of passengers in security checkpoint in an airport is the key element assisting in evaluating design of current security check procedure and its modifications. To establish a reliable and referential model for exploring passenger flow, we introduce Queueing theory, the most classical mathematical model in analyzing waiting lines and congestion, and append several important adjustments to this model in order to better simulate virtual scenario in current airport security checkpoints.
 
+
 ### 2.1 Introduction of Queueing Theory
 
 - Originated by research of Agner Krarup Erlang, Queueing Theory has been in prevailing use in telecommunication, transportation, and computing. Basic queueing model consists of several independent yet interplaying parts: 1) the arrival process of customers; 2) the behavior of customers; 3) the service efficiency; 4) the service discipline; 5) the service capacity; 6) the waiting room. In dealing with any single topic, we have to specify these elements according to situation in reality.
@@ -36,6 +37,7 @@ This is the Problem D in **2017 Interdisciplinary Contest In Modeling®**, with 
 </p>
 
 - The remarkable characteristic of this rule is that, it doesn't depend on specific distribution of arrival distribution, service distribution, service order, or almost everything else in this system. This intuitive law could provide suggestive information about average customer flow in a long run.
+
 
 ### 2.2 Queueing Theory for Airport Security Checkpoint Passenger Flow
 
@@ -88,7 +90,6 @@ lines(lowess(x,y), col = "blue")
 <img src="/images/R output.png" width = "600">
 </p>
 
-
 - Based on information resulted from regression, we figure out that rate of occurrence of
 arriving every x thousands people is λexp^(-λx), with rate of arrival **λ = 0.03404**.
 
@@ -105,7 +106,6 @@ arriving every x thousands people is λexp^(-λx), with rate of arrival **λ = 0
 - The conspicuous bell-shape graph tells us that, the number of passengers arriving airport security checkpoint reaches the peak around 14pm-15pm and 17pm-18pm every day, and that relatively less people coming to airport early in the morning or late in the evening.
 
 - In spite of lesson about distribution of passengers in a day, which guides us in data generating later for our examination of model, this bell-shape graph also precludes us from utilizing Little’s Law in predicting passengers flow in airport security checkpoint. The reason is that, one underlying presumption of Little’s Law is that every single customer makes decision of joining the queue for service or not based merely on current length of waiting line and assumed efficiency of server, and once a customer face the situation where waiting queue is too long or servers act in an exceedingly dilatory characteristic, he/she will generally choose come later of not participate in the service at all.
-
 
 - However, this graph shows that, due to passengers seldom give up their booked flights or endorse tickets because of long security line, even though in some rush hours security checkpoints are extremely crowded, people will still flow into waiting lines and deteriorate the condition in checkpoints. Based on this realization, we have to deviate from Little’s Law, and construct some other approaches in estimating passengers flow.
 
@@ -124,6 +124,7 @@ arriving every x thousands people is λexp^(-λx), with rate of arrival **λ = 0
 - Despite occasional situation where some passengers who are rushing for their flights that will take off in several minutes, and other passengers allow them to jump into first place in a queue, the service discipline in airport security checkpoint is generally "First In First Out" (FIFO).
 
 - Another special situation is that, when one passenger is suspicious of carrying certain dangerous items, either in his/her carried-on baggage or in his/her own body, he/she will undergo second-round examination and re-pass machine scanner. In our model, to simplify this scenario, we just double the time needed for suspicious passengers to pass security checkpoint, and do not change service discipline for these specific cases.
+
 
 ### 2.3 Modeling
 
@@ -170,6 +171,7 @@ and
 - According to graphs shown above, passengers flow, and passengers needing to wait long time have strong positive relationship with number incoming passengers in each time period of a day, no matter whether we assume service efficiency constant or not. The airport security checkpoint will confront severe challenge of crowded people flow during time periods when arrival rate of passengers reaches peak (usually 14PM -18PM according
 to our empirical study in previous sections), and will face relatively less passengers in other periods of a day.
 
+
 ## 3 Procedural Model and Modifications
 
 ### 3.1 Analysis of Current TSA Airport Security Checking Procedure
@@ -203,11 +205,23 @@ to our empirical study in previous sections), and will face relatively less pass
 
 #### 3.1.2 Main Reason for Procrastination
 
+- **Clog caused by suspicious passengers.** In our simplified model (and generally in reality as well), once a passenger or his/her carried-on items is suspected of constructing threat to safety, security officers will conduct a detailed inspection manually and all other passengers in waiting lines are stuck. This means, a great
+amount of “innocent” passengers, who can finish the whole inspection process within 5 minutes if not stuck, lose their precious time during unnecessary waiting.
 
-
+- **Static Line-up System.** With scanning machine fixed in certain places, and all passengers line up one by one to pass security checking, current procedure predestines that, the maximum amount of passengers undergoing inspection is limited by number of server lines provided in any time period. From this perspective, restricted space in airport constrains higher security checking efficiency.
 
 ### 3.2 Modifications on Current TSA Airport Security Checking Procedure
+
+- We come up with two different modifications, in order to deal with two major drawbacks in current security checking procedure respectively. We will introduce either modified procedure, and then compare all three procedures with respect to their efficiency, which is indicated by average time spent during security checking process of passengers.
+
 #### 3.2.1 Modification 1: Bifurcation System
+
+- To solve the problem of procrastination resulted from “suspicious” passengers, we introduce a bifurcation system in Phase 2 of current security checking procedure. The basic idea of this system is that, whenever a passenger is regarded as suspicious after machine scanning and officer’s inspection, no matter due to body or baggage, he/she will be guided into a tributary track to undergo second-round checking. If they still could not
+pass, they are required to get into additional scanning, and experience more detailed and thorough examination, and any further suspect of danger will force these passengers to be excluded from boarding.
+
+- For “innocent” passengers who used to suffer longer lining period due to retarding process of inspection suspicious passengers, this mechanism prevents them from waiting for extra time any more, so that average awaiting time in line for these passengers could be substantially reduced. In addition, for suspicious passengers, who also have to experience second round checking in pre-modification procedure, they will spend, in worst scenario, the same amount of time as they will spend in current procedure.
+
+- Since efficiency on examining innocent passengers is improved and that in checking suspicious passengers is not compromised, the efficiency of whole procedure will be definitely elevated after amendment of this bifurcation system. The modified procedure could be simplified as following:
 
 <p align="center">
 <img src="/images/model2.png" width = "330">      <img src="/images/process2.png" width = "330">
@@ -215,40 +229,136 @@ to our empirical study in previous sections), and will face relatively less pass
 
 #### 3.2.2 Modification 2: Circular Line-up System
 
+- The other modification we introduce is aimed to improve line-up section in current security checking procedure. In stead of several parallel lines of security inspection (for example, nearly 20 in Chicago O’hare Airport Terminal 5), a circular line-up system will be put into use, in order to guarantee that once passengers get into this system, they will keep moving and save time wasted in waiting in line in current procedure. The modified procedure can be illustrated as below:
+
+  - After Phase 1 (document inspection), passengers will get into a commodious “lobby” where they could finish required work such as taking off coats. Unlike current procedure, where passengers are supposed to wait in line to pick up box and put required items into, this lobby provides a great amount of box picking-up spots, and
+  huge amount of passengers could make preparation for checking simultaneously.
+
+  - Finishing preparation and carrying boxes filled with shoes or electronic devices, passengers are about to get into circular checking system, which is consist of two tracks of moving pedrails—inner one for checking baggage and items in box, and outer one for body checking — and door-like scanning machine fixed in certain point over pedrails. Once his/her previous passenger has stepped onto the pedrail and put their items on goods track, they could the waiting passenger could step onto pedrail as well and start his/her own inspection process, without necessity of waiting previous passenger completing inspection process before starting his/her own checking.
+
+  - Once a passenger successfully pass all inspections, he/she could get out this circular system from exit spot (near lowest point of circle depicted in left graph above); otherwise, he/she is required to continue moving on the pedrail (to right part of system in left graph above) and undergo second-round checking. If suspicious passengers could still not pass second round inspection, he/she is supposed to get into additional scanning section for more detailed examination by officers and scanning machines.
+
+  - When finishing checking in Phase 1, passengers will again get into a “lobby” and proceed to Phase 3 for tidying up and packing up. No need for lining up is assumed in this phase.
+
 <p align="center">
 <img src="/images/model3.png" width = "330">      <img src="/images/Process3.JPG" width = "330">
 </p>
 
+
 ### 3.3 Comparison of Procedural Models
+
+- In this section, we conduct comparison among three procedural models — current procedure plus two with either modification respectively — from theoretical and empirical perspective. The main criterion in our comparison is efficiency of each procedural model, or more specifically, the average time of passengers spent in whole inspection system. The less the time consumed in security checkpoint, the higher efficiency we assume for the procedure. For convenience, in later discussion, “Procedure 1” will represent current procedural model, “Procedure 2” will indicate procedure with modification Bifurcation System, and “Procedure 3” will stand for procedure with modification Circular Line-up.
+
 #### 3.3.1 Theoretical Comparison
+
+- The main difference among three procedural models falls on Phase 2:
+
+  - in Procedure 1, passengers wait in a line until previous passengers finishing checking, and suspicious passengers’ double check will procrastinate progress of passengers behind;
+
+  - in Procedure 2, passengers also wait in a line until previous passengers finishing inspection, while suspicious passengers could utilize a bifurcated track for second round inspection and will not influence checking progress of other passengers;
+
+  - in Procedure 3, passengers are allowed to get onto moving pedrail following previous passengers, and several passengers could undergo security checking process at the same time, and suspicious passengers could get second round inspection without interference of innocent passengers’ progress.
+
+- To compare efficiency of three procedures in Phase 2, we assume there is only one server in airport security checkpoint, and construct following graphs:
 
 <p align="center">
 <img src="/images/proc1.png" width = "210"> <img src="/images/proc2.png" width = "210"> <img src="/images/proc3.png" width = "210">
 </p>
 
+- By comparing Procedure 1 and Procedure 2, we can witness that P3 (abbreviation for passenger No.3) in Procedure 1 has to wait for extra one unit of time due to that P2 is suspicious and has to undergo second round checking, while P3 in Procedure 2 is not influenced by P2, so P3 in Procedure 2 will finish all process 1 unit time earlier than his/her counterpart in Procedure 1.
+
+- In comparison between Procedure 1 and Procedure 3, we can see that P3 and P4 are not affected by P2’s further inspection either, which improves efficiency of system. Also, from case of P3, we can see that the circular line-up allows P2 and P3 undergo security inspection simultaneously, contributing to substantial reduction on time spent in checkpoint in Procedure 3.
 
 #### 3.3.2 Empirical Comparison
+
+- Based on the super simplified experiment described in previous section, we obtain the preliminary idea that, modifications introduced in previous sections — bifurcation system and circular line-up — could help airport security checkpoint decrease amount of time required for serving flight passengers. However, to prove this statement, and estimate the extent of improvement by two modifications, we need to conduct empirical analysis and come up with concrete data.
+
+- Thus, we generate 100 groups of data, with 100 passengers along with information about their arriving time, time demanded for passing through each phase, and whether they are suspicious, in each group. The generation of arriving time follows exponential distribution in each group, and rate of suspicious people is controlled below 5%. Applying these data to three procedural models respectively, we get following results:
+
 <p align="center">
 <img src="/images/procedure comparison.png" width = "500">
 </p>
 
+- From graph above, we can harvest following takeaways in our empirical analysis:
+
+  - Both Procedure 2 and Procedure 3 bring about conspicuous improvement in security checking efficiency, compared with Procedure 1
+
+  - The assumed effect of Procedure 2 to reduce “innocent” passengers’ waiting time is demonstrated in the fact many later coming passengers actually could finish earlier
+
+  - Procedure 3 owns a huge advantage compared with other two procedures, mainly due to save of lining-up time by Circular Line-up System
+
+  - Crowding is still huge problem to deal with in all three procedures, since people coming in rush hour generally spend more time than passengers coming in other time intervals
 
 ## 4 Examination on Impact of Cultural Norms
+
+- The most interesting issue in the area of mathematical modeling may be applying abstract model into practical scenario, where idealized process collides with complicated reality. Even though we assume passengers are homogeneous and following guidance from security officers, in daily life, many cultural norms shape different behaviors taken by passengers, which could affect results of three procedures. Here, we cite three exemplary cultural norms from three huge groups of people utilizing flight as transportation — Chinese people, American people, and Japanese people—and examine their customs’ effect on performance of current procedural model and our modifications.
+
 ### 4.1 Chinese Cultural Norm —Emphasis on Family
+
+- Chinese people are most gregarious population in this world. Whenever it is possible, they will go traveling with whole family, and during whole itinerary they will try to be close to each other as frequently as possible. Hence, it is a common phenomenon in Chinese airport that, instead of assigning individual people to shortest line for security checking, airport officers always allow all members in one family to stand in same line, even though this assignment may cause one of checking line to become extremely overcrowded.
+
+- To illustrate this trend, we make the following change in our simulation of each of three models: whenever several people arrive airport within a short period, we assume they are members from a family, and then assign all of them into a single waiting line during Phase 2. With this alter, we re-run programs for three models, and reach results below:
+
 <p align="center">
 <img src="/images/Chinese norm.png" width = "500">
 </p>
 
+- Form these three graphs, we can clears see that Chinese people’s gregarious norm doesn’t significantly alter relative efficiency among three procedures, with Procedure 2 and Procedure 3 more efficient in serving passengers than Procedure 1, and Procedure 3 owning huge advantage even compared with Procedure 2. In addition, this cultural norm even further amplifies Procedure 3’s advantage, since assigning a batch of people to a single line constructs certain inefficiency while circular line-up system in Procedure 3 could avoid almost any sort of inefficiency during lining-up process.
+
+
 ### 4.2 American Cultural Norm — Emphasis on Private Space
+
+- Unlike Chinese people who wish to be close to other people, American people are usually more independent, and they are relatively sensitive to closeness with strangers in public area, such as airport. Thus, they always intentionally keep a certain distance between each other during lining-up and waiting for security checking, which, as a result, leads to loss of efficiency in security inspection to some extent.
+
+- In order to demonstrate American people’s inclination for individual space, we assume that, in each of three procedural models, American people have to spend one more unit time during security checking whenever there is someone lining ahead them, since their keeping space will cause procrastination, compared with tighter lining-up. Based on this modification, we run programs and get following results:
+
 <p align="center">
 <img src="/images/American norm.png" width = "500">
 </p>
 
+- Since American people’s tendency to private secrecy generally doesn’t interfere process of lining-up or security checking, it should only prolong time spent by majority of passengers while has nothing to do with ordinary comparison of efficiency of three procedures, which is demonstrated in graph above. In fact, American cultural norm lessens impact of suspicious passengers on other passengers, since there will be one more unit of time for their to conduct second round inspection before passengers lining behind stepping up.
+
+
 ### 4.3 Japanese Cultural Norm — Emphasis on Condition of Minorities
+
+- Japanese people have long been appraised for their high level of virtue, which is best represented in their willing to relinquish priorities during lining for pubic service for people in minority, such as pregnant women, disabled people, and the older and the young. They continue such a venerable custom in airport, and allow people in minority to undergo security checking first whenever possible.
+
+- For depicting Japanese people’s high status of moral, we assume in three procedural models that there are certain ratio of passengers regarded as minorities, and when they are supposed to wait in line, all other people will stop their checking progress and cede their priorities for these people in minority. According to this change, we re-operate programs and come up with following results:
+
 <p align="center">
 <img src="/images/Japanese norm.png" width = "500">
 </p>
 
+- Examination on effect of Japanese custom on efficiency of three procedures gives us some interesting results. First, since people in minorities could go head during waiting, some people coming later ever finish earlier. Also, since lining-up is basically not a issue during Procedure 3, the trend in Procedure 3 is generally not affected. Over all, the ordinary comparison of efficiency is also remained, where Procedure 3 owns tremendous advantage over other Procedure 1 and Procedure 2.
+
 ## 5 Conclusion
 
+- In this paper, we establish three models to optimize the passenger throughput at an Airport Security Checkpoint while guaranteeing the security. From reliable data about passenger amount in security checkpoint in each time period, we conduct empirical analysis, and reach the conclusion that passengers’ arrival rate exhibits exponential distribution, and amount of passengers arriving over time in a day shows a bell shape. We incorporate element of incoming passengers, efficiency in checkpoint, and remaining passengers from previous time period, we establish a series of functions, and come up with feasible methods in estimating number of passengers demanding service in security checkpoint at each time period of a day.
+
+- We explore the flow of passengers through the current security check process and identify the bottlenecks. Then we modify the body scanning and baggage scanning process by transforming the original straight-lined system into a bifurcation system, which shortens the waiting time resulted from "suspicious" passengers. Additionally, we introduce a circular line-up system to improve the line-up section in current security checking process. Fortunately, by developing the potential modifications, we could see an increase in passenger flow and reduction in variance of waiting time at the security checkpoint from our simulations of models.
+
+- Since our main purpose is to decrease variance in wait time, we are faced with a tradeoff between wait time spent by passengers and space occupied by modified systems. Also, to make the modifications, the bifurcation system requires to combine original lines, while the circular line-up system needs to be newly designed to replace the current line-up security checking procedures. Both of these two processes will require a large funding. Therefore, to economize space and reduce cost, we need to make simplifications to the structures of our systems and consider how the newly developed systems could affect the employments at airports.
+
+
 ## References
+
+[1] "Airport Wait Times." *Airport Wait Times.* U.S. Customs and Border Protection, n.d. 
+Web. 21 Jan. 2017. *<https : ==awt:cbp:gov=>.*
+  
+[2] Adan, Ivo, and Jacques Resing. "Queueing Theory." *Queueing Systems*(2015): 7-28.
+26 Mar. 2015.Web. 22 Jan. 2017.
+
+[3] "Queueing Theory." *Wikipedia.* Wikipedia Foundation, 27 Apr. 2002. Web. 22 Jan.
+2017. *< https : ==en:wikipedia:org=wiki=Queueing_theory >.*
+
+[4] Bertsekas, Dimitri P. "Networking Tutorials." Traffic Behavior and Queueing in
+a QoS Environment. M.I.T. Department of Electrical Engineering, Boston. 22 Jan.
+2017. Lecture.
+
+[5] "Exponential Distribution." *Wikipedia.* Wikipedia Foundation, 15 Mar. 2002.Web. 23
+Jan. 217. *< http : ==en:wikipedia:org=wiki=Exponential_distribution >.*
+
+[6] "Erlang Distribution." *Wikipedia.* Wikipedia Foundation, 20 Mar. 2003. Web. 23 Jan.
+2017. *< https : ==en:wikipedia:org=wiki=Erlang_distribution >.*
+
+
