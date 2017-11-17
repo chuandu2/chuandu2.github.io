@@ -158,6 +158,67 @@ and
 
 - The equations mean that we can estimate passenger flow at airport security checkpoint, and passengers enduring exceedingly long period of waiting of each time period, only with rate of arrival for each time period that we have just generated.
 
+---R version 3.4.2 Programming---
+
+```r
+data = rexp(n = 100, rate = 0.03404)
+data = round(data * 2)
+```
+
+```r
+inter1 = c(1:65)
+
+for (n in c(1:65)){
+  inter1[n] = data[n]
+}
+
+inter2 = c(1:35)
+```
+
+```r
+for (n in c(66:100)){
+  inter2[n-65] = data[n]
+}
+
+f1 = inter1[order(inter1)]
+f2 = inter2[order(inter2)]
+f2 = rev(f2)
+
+f = c(1:100)
+```
+
+```r
+for (n in c(1:65)){
+  f[n] = f1[n]
+}
+```
+
+```r
+for (n in c(1:35)){
+  f[n+65] = f2[n]
+}
+#s is the efficiency of security checking
+s = runif(n = 100, min = 15, max = 25)
+```
+
+```r
+p = c(1:100)
+r = p
+p[1] = f[1]
+r[1] = (1/s[1]) * f[1]
+for (n in c(2:100)){
+  p[n] = f[n] + r[n-1]
+  r[n] = (1/s[n]) * p[n]
+}
+```
+
+```r
+plot(c(1:100), r,
+     xlab = "Time Interval", ylab = "Amount of Waiting Passengers",
+     main = "Amount of Passengers Waiting Long Time over Time",
+     cex = 0.7)
+```
+
 - Based on the our mathematical model and process described above, we generate a series of data concerning arrival rate of passengers in each time period in a day, and construct the following graphs:
 
 <p align="center">
@@ -165,7 +226,15 @@ and
 </p>
 
 <p align="center">
+Figure 1: Assuming Constant Service Efficiency ρ
+</p>
+
+<p align="center">
 <img src="/images/3.png" width = "300">     <img src="/images/4.png" width = "300">
+</p>
+
+<p align="center">
+Figure 2: Assuming Distinct Efficiency S(t) for Each Time Period t
 </p>
 
 - According to graphs shown above, passengers flow, and passengers needing to wait long time have strong positive relationship with number incoming passengers in each time period of a day, no matter whether we assume service efficiency constant or not. The airport security checkpoint will confront severe challenge of crowded people flow during time periods when arrival rate of passengers reaches peak (usually 14PM -18PM according
