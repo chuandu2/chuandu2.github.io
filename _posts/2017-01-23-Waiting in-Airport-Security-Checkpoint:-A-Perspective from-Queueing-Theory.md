@@ -70,21 +70,21 @@ lines(lowess(x,y), col = "blue")
 <img src="/images/Rplot.png" width = "500">
 </p>
 
-- Disregarding the outlier of extremely low number of passengers arriving — which usually occurs near the beginning of operation of airport at 4AM or closing of airport operation at 1AM — we can witness an Exponential Distribution of arrival rate, with arrival of passengers around 200-300 in one hour happening most, and number of occurrences deteriorating as range of passengers gradually increasing until 2500+.
+* Disregarding the outlier of extremely low number of passengers arriving — which usually occurs near the beginning of operation of airport at 4AM or closing of airport operation at 1AM — we can witness an Exponential Distribution of arrival rate, with arrival of passengers around 200-300 in one hour happening most, and number of occurrences deteriorating as range of passengers gradually increasing until 2500+.
 
-- For further analysis, we establish the expression for exponential distribution as
+* For further analysis, we establish the expression for exponential distribution as
 
 <p align="center">
 <img src="/images/exp.png" width = "180">
 <p/>
   
-- Then we run a non-linear least squares regression, getting following result:
+* Then we run a non-linear least squares regression, getting following result:
 
 <p align="center">
 <img src="/images/R output.png" width = "600">
 </p>
 
-- Based on information resulted from regression, we figure out that rate of occurrence of
+* Based on information resulted from regression, we figure out that rate of occurrence of
 arriving every x thousands people is λexp^(-λx), with rate of arrival **λ = 0.03404**.
 
 #### 2.2.2 Distribution of Passenger Arrival Over Time
