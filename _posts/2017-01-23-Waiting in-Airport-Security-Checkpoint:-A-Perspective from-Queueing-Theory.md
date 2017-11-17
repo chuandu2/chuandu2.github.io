@@ -158,7 +158,7 @@ and
 
 - The equations mean that we can estimate passenger flow at airport security checkpoint, and passengers enduring exceedingly long period of waiting of each time period, only with rate of arrival for each time period that we have just generated.
 
----R version 3.4.2 Programming---
+---`R version 3.4.2` Programming---
 
 ```r
 data = rexp(n = 100, rate = 0.03404)
@@ -272,6 +272,278 @@ to our empirical study in previous sections), and will face relatively less pass
 <img src="/images/model1.png" width = "330">     <img src="/images/process1.png" width = "330">
 </p>
 
+---`Python 3` **Model 1** Programming---
+
+```python
+import random
+import numpy as np
+import operator
+import pandas as pd
+```
+
+```python
+class MyQueue(object):
+    def __init__(self, maxsize):
+        self.myQueue = []
+        self.maxsize = maxsize
+        self.size = 0
+    def put(self, item):
+        if self.size + 1 <= self.maxsize:
+            self.myQueue.insert(0, item)
+            self.size = self.size + 1
+        else:
+            print("Fail to insert item")
+            
+    def is_empty(self):
+        return self.size == 0
+        
+    def pop(self):
+        if not self.is_empty():
+            self.size = self.size - 1
+            return self.myQueue.pop()
+        return None
+        
+    def full(self):
+        return self.size >= self.maxsize
+    def peek(self):
+        if(self.size > 0):
+            return self.myQueue[self.size-1]
+        return None
+```
+
+```python
+class Person(object):
+    def __init__(self, interval, efficiency, is_suspicious = False):
+        self.is_suspicious = is_suspicious
+        self.record = []
+        self.interval = interval
+        self.efficiency = efficiency
+    
+    def record_current_time(self, time):
+        self.record.append(time)
+```
+
+```python
+class Server(object):
+    def __init__(self, phase, capacity, interval):
+        self.queue = MyQueue(maxsize= capacity)
+        self.phase = phase
+        if interval:
+            #self.interval = (random.random() * 0.4 + 0.6) * interval
+            self.interval = 5
+        else:
+            self.interval = interval
+    
+    def full(self):
+        return self.queue.full()
+```
+
+```python
+class Phase(object):
+    def __init__(self, phase_index, server_num, server_capacity, phase_interval = None):
+        self.servers = []
+        self.phase_index = phase_index
+        self.phase_interval = phase_interval
+        self.server_capacity = server_capacity
+        for _ in range(server_num):
+            self.servers.append(Server(phase_index, server_capacity, phase_interval))
+            
+    def size(self):
+        size = 0
+        for server in self.servers:
+            size += server.queue.size
+        return size
+    
+    def full(self):
+        flag = True
+        for server in self.servers:
+            flag = flag and server.full()
+        return flag
+```
+
+```python
+#data preprocess
+orig_data = pd.read_csv("data.csv",index_col="index")
+data1 = orig_data[:100]
+```
+
+```python
+#retrieve next fillable queue. Assume there exists a fillable queue in this phase
+
+def get_next_fillable_queue(phase):
+    shortest_count = phase.server_capacity
+    shortest_queue_index = -1
+    count = 0
+    for server in phase.servers:
+        if not server.full():
+            if server.queue.size < shortest_count:
+                shortest_count = server.queue.size
+                shortest_queue_index = count
+        count = count + 1
+    return (phase.phase_index, shortest_queue_index)
+```
+
+
+```python
+def get_next_candidate(phases):
+    shortest_time_interval_map = {0:9999, 1:9999, 2:9999, 3:9999}
+    
+    shortest_server_index_map = {0:(0,0)}
+    
+    phase_index = 0
+    for phase in phases:
+        server_index = 0
+        for server in phase.servers:
+            target = server.queue.peek()
+            if target:
+                if target.interval < shortest_time_interval_map[phase_index]:
+                    shortest_time_interval_map[phase_index] = target.interval
+                    #print(server_index)
+                    shortest_server_index_map[phase_index] = (phase_index, server_index) 
+            server_index = server_index + 1
+        phase_index = phase_index + 1
+    update_pairs = []
+    
+    for pairs in sorted(shortest_time_interval_map.items(), key=operator.itemgetter(1)):
+        if pairs[0] == 3:
+            #next changing passenger is to leave phase 3. In other words, he is about to finish procedure
+            for upair in update_pairs:
+                if phases[upair[0]].servers[shortest_server_index_map[upair[0]][1]].queue.peek():
+                    phases[upair[0]].servers[shortest_server_index_map[upair[0]][1]].queue.peek().interval = phases[3].servers[shortest_server_index_map[3][1]].queue.peek().interval
+            return shortest_server_index_map[3]
+        else:
+            if not phases[pairs[0] + 1].full():
+                for upair in update_pairs:
+                    if phases[upair[0]].servers[shortest_server_index_map[upair[0]][1]].queue.peek():
+                        phases[upair[0]].servers[shortest_server_index_map[upair[0]][1]].queue.peek().interval = phases[pairs[0]].servers[shortest_server_index_map[pairs[0]][1]].queue.peek().interval
+                return shortest_server_index_map[pairs[0]]
+            else:
+                update_pairs.append(pairs)
+            
+    #Should never reach this line
+    print("Should never reach this line")
+    return (-1,-1)
+```
+
+```python
+#assume next move for candidate is available. In other words, get_next_fillable_queue(_:) is ready. 
+#return curr_time, since function parameter passed by value
+def change_next_candidate(candidate,time):
+    
+    #pop target from the original queue
+    des = (0,0)
+    target = phase_list[candidate[0]].servers[candidate[1]].queue.peek()
+    #change interval of the passengers in all of the front of the queues
+    for phase in phase_list:
+        for server in phase.servers:
+            if not server.queue.is_empty():
+                if server.queue.peek() != target:
+                    server.queue.peek().interval -= target.interval
+    target = phase_list[candidate[0]].servers[candidate[1]].queue.pop()
+    
+    if target == None:
+        return -1
+    
+    
+    if candidate[0] == 3:
+        #target finished all the procedure
+        finished_list.append(target)
+    else:
+        des = get_next_fillable_queue(phase_list[candidate[0] + 1])
+        #add target to the queue in the next phase
+        phase_list[des[0]].servers[des[1]].queue.put(target)
+    
+    #increment curr_time
+    time += target.interval
+    
+    target.record_current_time(time)
+    
+    #update new_passenger interval to interval for new phase
+    if des[0] == 3:
+        #the interval of phase 3 is determined by the passenger, namely target only
+        target.interval = target.efficiency
+    elif des[0] == 2:
+        ##the interval of phase 3 is determined by the server, namely target only
+        if target.is_suspicious: 
+            #the interval of phase 2 will be doubled if the passenger, namely target, is suspicious
+            target.interval = 2 * phase_list[des[0]].servers[des[1]].interval
+        
+        else:
+            target.interval = phase_list[des[0]].servers[des[1]].interval
+    else:
+        #the interval of phase 1 is determined by the server only
+        target.interval = phase_list[des[0]].servers[des[1]].interval
+    
+    return time
+```
+
+```python
+def preprocess_data(data_index, data):
+    #data preprocess
+    
+    data = orig_data[data_index*100:(data_index * 100 + 100)]
+    data_list = [list(x) for x in data.to_records(index=False)]
+    data_list = list(map(lambda x: [int(x[0]), x[1], x[2]], data_list))
+    data_list = sorted(data_list,key=operator.itemgetter(0))
+
+    i = 0
+    person_data = []
+    for pair in data_list:
+        if i:
+            person_data.append([pair[0] - data_list[i - 1][0], pair[1], pair[2]])
+        else:
+            person_data.append(pair)
+        i = i + 1
+        
+    return person_data
+```
+
+```python
+orig_data = pd.read_csv("data.csv",index_col="index")
+output_data = []
+
+for dataset_index in range(99):
+    #initialize queue for each phase servers
+    total_passenger = 100
+    phase_list = [Phase(phase_index=0, server_num= 1, server_capacity = total_passenger ,phase_interval = 1)]
+
+    phase = Phase(phase_index = 1,server_num=3,server_capacity=total_passenger, phase_interval = 1)
+    phase_list.append(phase)
+    phase = Phase(phase_index = 2,server_num=3,server_capacity=5, phase_interval = 1)
+    phase_list.append(phase)
+    phase = Phase(phase_index = 3,server_num=3,server_capacity=5)
+    phase_list.append(phase)
+
+    person_data = preprocess_data(dataset_index, data = orig_data)
+    
+    for person in person_data:
+        phase_list[0].servers[0].queue.put(Person(interval = person[0], efficiency = person[1], is_suspicious=person[2]))
+
+    finished_list = []
+
+
+    count = 0
+    #global clock to keep track of time
+    curr_time = 0
+    while True:
+        candidate = get_next_candidate(phase_list)
+        temp = change_next_candidate(candidate,curr_time)
+        if temp == -1:
+            break
+        else:
+            curr_time = temp
+        count = count + 1
+
+    records = [person.record[3] - person.record[0] for person in finished_list]
+    output_data.append(records)
+```
+
+```python
+records = [person.record for person in finished_list]
+#every passenger timeline, [entry_time, first_phase_finished_time, second_phase_finished_time, third_phase_finished_time]
+```
+
+
 #### 3.1.2 Main Reason for Procrastination
 
 - **Clog caused by suspicious passengers.** In our simplified model (and generally in reality as well), once a passenger or his/her carried-on items is suspected of constructing threat to safety, security officers will conduct a detailed inspection manually and all other passengers in waiting lines are stuck. This means, a great
@@ -296,6 +568,233 @@ pass, they are required to get into additional scanning, and experience more det
 <img src="/images/model2.png" width = "330">      <img src="/images/process2.png" width = "330">
 </p>
 
+---`Python 3` **Model 2** Programming---
+
+```python
+#class MyQueue set initial "maximize = 1"; class Person same as model 1
+class Server(object):
+    def __init__(self, phase, capacity, interval, is_recheck = False):
+        self.queue = MyQueue(maxsize= capacity)
+        self.is_recheck = is_recheck
+        self.phase = phase
+        if interval:
+            #self.interval = (random.random() * 0.4 + 0.6) * interval
+            self.interval = 5
+        else:
+            self.interval = interval
+    
+    def full(self):
+        return self.queue.full()
+```
+
+```python
+class Phase(object):
+    def __init__(self, phase_index, server_num, server_capacity, phase_interval = None, phase_interval_for_recheck = 1 ):
+        self.servers = []
+        self.phase_index = phase_index
+        self.phase_interval = phase_interval
+        self.server_capacity = server_capacity
+        self.server_num = server_num
+        for _ in range(server_num):
+            self.servers.append(Server(phase_index, server_capacity, phase_interval))
+        if phase_index == 2:
+            self.servers.append(Server(phase_index, server_capacity, phase_interval_for_recheck, is_recheck= True))
+        
+            
+    def size(self):
+        size = 0
+        count = 0
+        for server in self.servers:
+            if count == self.server_num:
+                break
+            size += server.queue.size
+            count = count + 1
+        return size
+    
+    def full(self):
+        flag = True
+        count = 0
+        for server in self.servers:
+            if count == self.server_num:
+                break
+            flag = flag and server.full()
+            count = count + 1
+        return flag
+```
+
+```python
+#data preprocess
+orig_data = pd.read_csv("data.csv",index_col="index")
+data1 = orig_data[:100]
+
+data_list_1 = [list(x) for x in data1.to_records(index=False)]
+data_list_1 = list(map(lambda x: [int(x[0]), x[1]], data_list_1))
+data_list_1 = sorted(data_list_1,key=operator.itemgetter(0))
+
+i = 0
+person_data = []
+for pair in data_list_1:
+    if i:
+        person_data.append([pair[0] - data_list_1[i - 1][0], pair[1]])
+    else:
+        person_data.append(pair)
+    i = i + 1
+```
+
+```python
+#initialization
+total_passenger = 100
+finished_list = []
+phase_list = [Phase(phase_index=0, server_num= 1, server_capacity = total_passenger ,phase_interval = 5)]
+
+phase = Phase(phase_index = 1,server_num=3,server_capacity=total_passenger, phase_interval = 5)
+phase_list.append(phase)
+phase = Phase(phase_index = 2,server_num=3,server_capacity=5, phase_interval = 5)
+phase_list.append(phase)
+phase = Phase(phase_index = 3,server_num=3,server_capacity=5)
+phase_list.append(phase)
+
+for person in person_data:
+    phase_list[0].servers[0].queue.put(Person(interval = person[0], efficiency = person[1]))
+```
+
+```python
+#retrieve next fillable queue. Assume there exists a fillable queue in this phase
+def get_next_fillable_queue(phase, target, candidate):
+    if candidate == (2, phase_list[2].server_num):
+        return (2, phase.server_num)
+    
+    shortest_count = phase.server_capacity
+    shortest_queue_index = -1
+    count = 0
+    for server in phase.servers:
+        if not server.full():
+            if server.queue.size < shortest_count:
+                shortest_count = server.queue.size
+                shortest_queue_index = count
+        count = count + 1
+    return (phase.phase_index, shortest_queue_index)
+```
+
+```python
+def get_next_candidate(phases = phase_list):
+    shortest_time_interval_map = {0:9999, 1:9999, 2:9999, 3:9999, 4:9999}
+    
+    shortest_server_index_map = {0:(0,0)}
+    
+    phase_index = 0
+    for phase in phases:
+        server_index = 0
+        for server in phase.servers:
+            target = server.queue.peek()
+            if target:
+                if target.is_suspicious and phase_index == 2:
+                    shortest_time_interval_map[4] = target.interval
+                    shortest_server_index_map[4] = (2, server_index)
+                else:
+                    if target.interval < shortest_time_interval_map[phase_index]:
+                        shortest_time_interval_map[phase_index] = target.interval
+                        #print(server_index)
+                        shortest_server_index_map[phase_index] = (phase_index, server_index) 
+                    
+                
+                    
+            server_index = server_index + 1
+        phase_index = phase_index + 1
+    update_pairs = []
+    print(sorted(shortest_time_interval_map.items(), key=operator.itemgetter(1)))
+    for pairs in sorted(shortest_time_interval_map.items(), key=operator.itemgetter(1)):
+        if pairs[0] == 3:
+            #next changing passenger is to leave phase 3. In other words, he is about to finish procedure
+            for upair in update_pairs:
+                if phases[upair[0]].servers[shortest_server_index_map[upair[0]][1]].queue.peek():
+                    phases[upair[0]].servers[shortest_server_index_map[upair[0]][1]].queue.peek().interval = phases[3].servers[shortest_server_index_map[3][1]].queue.peek().interval
+            return shortest_server_index_map[3]
+        
+        elif pairs[0] == 4:
+            if not phases[2].servers[phases[2].server_num].full():
+                for upair in update_pairs:
+                    if phases[upair[0]].servers[shortest_server_index_map[upair[0]][1]].queue.peek():
+                        phases[upair[0]].servers[shortest_server_index_map[upair[0]][1]].queue.peek().interval = phases[2].servers[shortest_server_index_map[pairs[0]][1]].queue.peek().interval
+                return shortest_server_index_map[4]
+            else:
+                update_pairs.append(pairs)
+        else:
+            if not phases[pairs[0] + 1].full():
+                for upair in update_pairs:
+                    if upair[0] != 4 and phases[upair[0]].servers[shortest_server_index_map[upair[0]][1]].queue.peek():
+                        phases[upair[0]].servers[shortest_server_index_map[upair[0]][1]].queue.peek().interval = phases[pairs[0]].servers[shortest_server_index_map[pairs[0]][1]].queue.peek().interval
+                    if upair[0] == 4 and phases[2].servers[shortest_server_index_map[4][1]].queue.peek():
+                        phases[2].servers[shortest_server_index_map[4][1]].queue.peek().interval = phases[pairs[0]].servers[shortest_server_index_map[pairs[0]][1]].queue.peek().interval
+                
+                return shortest_server_index_map[pairs[0]]
+            else:
+                update_pairs.append(pairs)
+            
+    #Should never reach this line
+    print("Should never reach this line")
+    return (-1,-1)
+```
+
+```python
+#assume next move for candidate is available. In other words, get_next_fillable_queue(_:) is ready. 
+#return curr_time, since function parameter passed by value
+def change_next_candidate(candidate,time):
+    
+    #pop target from the original queue
+    des = (0,0)
+    target = phase_list[candidate[0]].servers[candidate[1]].queue.peek()
+    #change interval of the passengers in all of the front of the queues
+    for phase in phase_list:
+        for server in phase.servers:
+            if not server.queue.is_empty():
+                if server.queue.peek() != target:
+                    server.queue.peek().interval -= target.interval
+    target = phase_list[candidate[0]].servers[candidate[1]].queue.pop()
+    
+    if target == None:
+        return -1
+    
+    
+    if candidate[0] == 3:
+        #target finished all the procedure
+        finished_list.append(target)
+    else:
+        if candidate == (2,phase_list[2].server_num):
+            target.is_suspicious = False
+        des = get_next_fillable_queue(phase_list[candidate[0] + 1], target,candidate[1])
+        print("des"+str(des) )
+        print("is_suspicious" + str(target.is_suspicious))
+        #add target to the queue in the next phase
+        phase_list[des[0]].servers[des[1]].queue.put(target)
+    
+    #increment curr_time
+    time += target.interval
+    
+    target.record_current_time(time)
+    
+    #update new_passenger interval to interval for new phase
+    if des[0] == 3:
+        #the interval of phase 3 is determined by the passenger, namely target only
+        target.interval = target.efficiency
+    elif des[0] == 2:
+        ##the interval of phase 3 is determined by the server, namely target only
+        if target.is_suspicious: 
+            target.interval = phase_list[2].servers[phase_list[2].server_num].interval
+        
+        else:
+            target.interval = phase_list[2].servers[des[1]].interval
+    else:
+        #the interval of phase 1 is determined by the server only
+        target.interval = phase_list[des[0]].servers[des[1]].interval
+    
+    return time
+```
+
+```python
+records = [person.record for person in finished_list]
+```
+
 #### 3.2.2 Modification 2: Circular Line-up System
 
 - The other modification we introduce is aimed to improve line-up section in current security checking procedure. In stead of several parallel lines of security inspection (for example, nearly 20 in Chicago O’hare Airport Terminal 5), a circular line-up system will be put into use, in order to guarantee that once passengers get into this system, they will keep moving and save time wasted in waiting in line in current procedure. The modified procedure can be illustrated as below:
@@ -312,6 +811,186 @@ pass, they are required to get into additional scanning, and experience more det
 <p align="center">
 <img src="/images/model3.png" width = "330">      <img src="/images/Process3.JPG" width = "330">
 </p>
+
+---`Python 3` **Model 3** Programming---
+
+```python
+#class MyQueue, Person, Server same as model 1
+class Phase(object):
+    def __init__(self, phase_index, server_num, server_capacity, phase_interval = None):
+        self.servers = []
+        self.phase_index = phase_index
+        self.phase_interval = phase_interval
+        self.server_capacity = server_capacity
+        for _ in range(server_num):
+            self.servers.append(Server(phase_index, server_capacity, phase_interval))
+            
+    def size(self):
+        size = 0
+        for server in self.servers:
+            size += server.queue.size
+        return size
+    
+    def full(self):
+        flag = True
+        for server in self.servers:
+            flag = flag and server.full()
+        return flag
+```
+
+```python
+#data proprocess
+orig_data = pd.read_csv("data.csv",index_col="index")
+data1 = orig_data[:100]
+```
+
+```python
+data_list_1 = [list(x) for x in data1.to_records(index=False)]
+data_list_1 = list(map(lambda x: [int(x[0]), x[1]], data_list_1))
+data_list_1 = sorted(data_list_1,key=operator.itemgetter(0))
+```
+
+```python
+i = 0
+person_data = []
+for pair in data_list_1:
+    if i:
+        person_data.append([pair[0] - data_list_1[i - 1][0], pair[1]])
+    else:
+        person_data.append(pair)
+    i = i + 1
+```
+
+```python
+#initialize queue for each phase servers
+total_passenger = 100
+phase_list = [Phase(phase_index=0, server_num= 1, server_capacity = total_passenger ,phase_interval = 5)]
+
+phase = Phase(phase_index = 1,server_num=3,server_capacity=total_passenger, phase_interval = 5)
+phase_list.append(phase)
+phase = Phase(phase_index = 2,server_num=3,server_capacity=5, phase_interval = 5)
+phase_list.append(phase)
+phase = Phase(phase_index = 3,server_num=3,server_capacity=5)
+phase_list.append(phase)
+```
+
+```python
+for person in person_data:
+    phase_list[0].servers[0].queue.put(Person(interval = person[0], efficiency = person[1]))
+```
+
+```python
+finished_list = []
+suspicious_list = []
+```
+
+```python
+#retrieve next fillable queue. Assume there exists a fillable queue in this phase
+def get_next_fillable_queue(phase):
+    shortest_count = phase.server_capacity
+    shortest_queue_index = -1
+    count = 0
+    for server in phase.servers:
+        if not server.full():
+            if server.queue.size < shortest_count:
+                shortest_count = server.queue.size
+                shortest_queue_index = count
+        count = count + 1
+    return (phase.phase_index, shortest_queue_index)
+```
+
+```python
+def get_next_candidate(phases = phase_list):
+    shortest_time_interval_map = {0:9999, 1:9999, 2:9999, 3:9999}
+    
+    shortest_server_index_map = {0:(0,0)}
+    
+    phase_index = 0
+    for phase in phases:
+        server_index = 0
+        for server in phase.servers:
+            target = server.queue.peek()
+            if target:
+                if target.interval < shortest_time_interval_map[phase_index]:
+                    shortest_time_interval_map[phase_index] = target.interval
+                    #print(server_index)
+                    shortest_server_index_map[phase_index] = (phase_index, server_index) 
+            server_index = server_index + 1
+        phase_index = phase_index + 1
+    update_pairs = []
+    
+    for pairs in sorted(shortest_time_interval_map.items(), key=operator.itemgetter(1)):
+        if pairs[0] == 3:
+            #next changing passenger is to leave phase 3. In other words, he is about to finish procedure
+            for upair in update_pairs:
+                if phases[upair[0]].servers[shortest_server_index_map[upair[0]][1]].queue.peek():
+                    phases[upair[0]].servers[shortest_server_index_map[upair[0]][1]].queue.peek().interval = phases[3].servers[shortest_server_index_map[3][1]].queue.peek().interval
+            return shortest_server_index_map[3]
+        else:
+            if not phases[pairs[0] + 1].full():
+                for upair in update_pairs:
+                    if phases[upair[0]].servers[shortest_server_index_map[upair[0]][1]].queue.peek():
+                        phases[upair[0]].servers[shortest_server_index_map[upair[0]][1]].queue.peek().interval = phases[pairs[0]].servers[shortest_server_index_map[pairs[0]][1]].queue.peek().interval
+                return shortest_server_index_map[pairs[0]]
+            else:
+                update_pairs.append(pairs)
+            
+    #Should never reach this line
+    print("Should never reach this line")
+    return (-1,-1)
+```
+
+```python
+#assume next move for candidate is available. In other words, get_next_fillable_queue(_:) is ready. 
+#return curr_time, since function parameter passed by value
+def change_next_candidate(candidate,time):
+    
+    #pop target from the original queue
+    des = (0,0)
+    target = phase_list[candidate[0]].servers[candidate[1]].queue.peek()
+    #change interval of the passengers in all of the front of the queues
+    for phase in phase_list:
+        for server in phase.servers:
+            if not server.queue.is_empty():
+                if server.queue.peek() != target:
+                    server.queue.peek().interval -= target.interval
+    target = phase_list[candidate[0]].servers[candidate[1]].queue.pop()
+    
+    if target == None:
+        return -1
+    
+    
+    if candidate[0] == 3:
+        #target finished all the procedure
+        finished_list.append(target)
+    elif candidate[0] == 2 and target.is_suspicious:
+        suspicious_list.append(target)
+    else:
+        des = get_next_fillable_queue(phase_list[candidate[0] + 1])
+        #add target to the queue in the next phase
+        phase_list[des[0]].servers[des[1]].queue.put(target)
+    
+    #increment curr_time
+    time += target.interval
+    
+    target.record_current_time(time)
+    
+    #update new_passenger interval to interval for new phase
+    if des[0] == 3:
+        #the interval of phase 3 is determined by the passenger, namely target only
+        target.interval = target.efficiency
+    else:
+        #the interval of phase 1 is determined by the server only
+        target.interval = phase_list[des[0]].servers[des[1]].interval
+    
+    return time
+```
+
+```python
+finished_list_record = [person.record for person in finished_list]
+for record in sorted(finished_list_record,key=operator.itemgetter(0)):
+    print(record)
+```
 
 
 ### 3.3 Comparison of Procedural Models
