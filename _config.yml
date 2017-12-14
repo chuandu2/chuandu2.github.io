@@ -14,9 +14,9 @@ sass:
   sass_dir: assets/sass
 url: http://localhost:4000
 disqus_shortname: 
-facebook_username: "sophie.du.52"
 linkedin_username: "chuan-du-904954b4"
 github_username:  "chuandu2"
+instagram_username: "sophiechuanchuan_du"
 feed_icon: rss
 email: "cd2sophie831@gmail.com"
 gems: [jekyll-paginate]
