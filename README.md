@@ -1,6 +1,6 @@
 "Da weiß ich die Stürme schön und bin erregt wie das Meer."
 
-Stay Hungry, Stay Young.
+Stay hungry, stay young.
 
 - This site is Sophie's home workpage for managing group and personal projects. Be excited and stay tuned please! :D
 
