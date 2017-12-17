@@ -2,7 +2,7 @@
 layout: post
 title: "The Position of the European Union in the Business Cycle Before & After the Global Financial Crisis and Relevant Economic Policies"
 author: "Chuan (Sophie) Du"
-categories: project
+categories: blog
 Date: "6/01/2017"
 ---
 
@@ -29,7 +29,10 @@ This is the research project for the Illinois-Austria (Vienna) Study Abroad Prog
   - How did the European Union respond to the 2008 crisis and how do those fiscal and monetary policies influence and develop the European economy?
 
 <p align="center">
-<img src="/images/procedure comparison.png" width = "500">
+<img src="/images/business cycle.png" width = "500">
+</p>
+<p align="center">
+Figure 1: Business Cycle
 </p>
 
 ## 2 Global Financial Crisis and Its Impacts on European Union Countries
@@ -53,14 +56,21 @@ This is the research project for the Illinois-Austria (Vienna) Study Abroad Prog
 - In order to analyze where the European Union was in the business cycle before the financial crisis, we first look at the European Union per capita GDP in a 10-year period, from year 2002 to 2012, including the time when the global financial crisis started and expanded. Given the data from the World Bank, we use the python code to visualize the per capita GDP amounts with a bar chart. From Figure 2 we see that the European Union per capita GDP kept increasing in 2002 – 2008, with the value rising from 20006 USD to 38097 USD. Due to the strong impacts of the global financial crisis in 2008, and after a reaction lag, the per capita GDP dropped to 33935 USD by 2009 and kept declining to 33659 USD by 2010. After the severe shock of the crisis, the per capita GDP rose back to 36388 USD.
 
 <p align="center">
-<img src="/images/procedure comparison.png" width = "500">
+<img src="/images/eu_GDP.png" width = "500">
+</p>
+<p align="center">
+Figure 2: European Union GDP per Capita 2002 - 2012
 </p>
 
 - To see the trend of change in European GDP in this 10-year period, we use Figure 3, the graph of European Union GDP per Capita Growth Rate (annual %) to illustrate it.
 
 <p align="center">
-<img src="/images/procedure comparison.png" width = "500">
+<img src="/images/growth rate 2002-2012.png" width = "500">
 </p>
+<p align="center">
+Figure 3: GDP per Capita Growth Rate 2002 – 2012 (annual %)
+</p>
+
 
 - Here we see that from 2002 to 2012, the European Union GDP growth rate is mostly higher than 0, in a positive rate, which means that the GDP was increasing in most periods of this 10-year period. There was a trough around 2009, where the European Union GDP growth rate severely dropped down to -4.67%, strongly influencing the overall European economic situation in the following years. The average growth rate is below 1.5% (1.08%), even though the growth rate in many parts of the period is higher than 1.5%. We can tell that the horrible economic situation caused by the financial crisis in 2008 negatively changed the process in the business cycle and left behind serious problems that urgently need to be solved in the following years.
 
@@ -69,7 +79,10 @@ This is the research project for the Illinois-Austria (Vienna) Study Abroad Prog
 - Then we look at the second indicator – the unemployment rate. We use the data from the Eurostat to see how unemployment rate behaved in this 10-year period and what it suggests about where the European Union is in the business cycle.
 
 <p align="center">
-<img src="/images/procedure comparison.png" width = "500">
+<img src="/images/unemployment rate.png" width = "500">
+</p>
+<p align="center">
+Figure 4: Unemployment Rate in European Union 2002 – 2012
 </p>
 
 - According to Figure 4, the unemployment rate remainedfairly steady at around 9.2% from year 2002 to 2006. Then it steadily followed a downward path, corresponding to the steady rise of GDP in 2002 – 2006 and lasting until the first quarter of 2008, when the unemployment rate reached a low value of 6.8% (16.2 million persons) before rising sharply in the wake of the financial crisis. Between the first quarter of 2008 and the second quarter of 2010, the European Union unemployment rose by 6.9 million persons, and we can see from Figure 4 that the unemployment rate jumped up to 9.7%. Such a high unemployment rate was relatively unchanged in the following year, even though this was a false sign as increased stability in the labor market and at the end of crisis. Ironically, the unchanged unemployment rate indicates an end of the crisis, but the rate was stable at a high point which refers to a long-lasting impact of the crisis.
@@ -79,7 +92,10 @@ This is the research project for the Illinois-Austria (Vienna) Study Abroad Prog
 - The third indicator – inflation rate indicates the general change in price level from 2002 to 2012. The inflation rate data are based on the change in unadjusted Consumer Price Index (CPI), a measure that examines the weighted average of prices in a basket of consumer goods and services, such as transportation, food and medical care.
 
 <p align="center">
-<img src="/images/procedure comparison.png" width = "500">
+<img src="/images/inflation rate 2002-2012.png" width = "500">
+</p>
+<p align="center">
+Figure 5: Inflation Rate in European Union 2002 – 2012
 </p>
 
 - From Figure 5, the graph of inflation rate in European Union, we see an obvious rise from the second quarter of 2007 to the second quarter of 2008, with a peak at 4.4% and then a rapid decline to 0.3% in the second quarter of 2009.
@@ -110,9 +126,11 @@ This is the research project for the Illinois-Austria (Vienna) Study Abroad Prog
 - To restore financial stability and stimulate economic growth after the crisis, the European Union governments used expansionary fiscal policy to increase the spending on banking system in form of direct capital. Meanwhile, given the data from European Central Bank, shown in Figure 6, we can tell that the money supply M1 (circulation of notes and coins) obviously increased since late 2008 and continued the upward trend, which indicated usage of expansionary monetary policy.
 
 <p align="center">
-<img src="/images/procedure comparison.png" width = "500">
+<img src="/images/Money Supply.png" width = "500">
 </p>
+<p align="center">
 Figure 6: EU Money Supply M1 2007 – 2010
+</p>
 
 #### 3.3.1 Fiscal Policies and Impacts
 
@@ -123,7 +141,7 @@ Figure 6: EU Money Supply M1 2007 – 2010
 - As shown in Figure 10, Y1 at first goes to Y3 due to the increase in government spending (G), and then Y3 goes lower to Y2 towards Y1 due to the crowding-out effect, a decrease in private investment (I). However, Y2 is still larger than Y1, the original output, which means that after the process, the increase in government expenditures has finally increased the output, stimulating the economic growth. This crowing-out effect could explain the fluctuations of economic indicators we have observed in part 2.2. 
 
 <p align="center">
-<img src="/images/proc1.png" width = "210"> <img src="/images/proc2.png" width = "210"> <img src="/images/proc3.png" width = "210">
+<img src="/images/AE.png" width = "280">          <img src="/images/money demand and interest rate.png" width = "280">
 </p>
 
 #### 3.3.2 Monetary Policies and Impacts
