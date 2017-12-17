@@ -141,24 +141,7 @@ Figure 6: EU Money Supply M1 2007 – 2010
 - As shown in Figure 10, Y1 at first goes to Y3 due to the increase in government spending (G), and then Y3 goes lower to Y2 towards Y1 due to the crowding-out effect, a decrease in private investment (I). However, Y2 is still larger than Y1, the original output, which means that after the process, the increase in government expenditures has finally increased the output, stimulating the economic growth. This crowing-out effect could explain the fluctuations of economic indicators we have observed in part 2.2. 
 
 <p align="center">
-<img src="/images/AE.png" width = "380">
-</p>
-<p align="center">
-Figure 7: Increased G Effect on Y
-</p>
-
-<p align="center">
-<img src="/images/money demand and interest rate.png" width = "410">
-</p>
-<p align="center">
-Figure 8: Money Demand & Interest Rate
-</p>
-
-<p align="center">
-<img src="/images/interest_rate.png" width = "320">
-</p>
-<p align="center">
-Figure 9: Increased Interest Rate Effect
+<img src="/images/Figure7.png" width = "270"> <img src="/images/Figure8.png" width = "270"> <img src="/images/Figure9.png" width = "270">
 </p>
 
 <p align="center">
