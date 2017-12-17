@@ -141,7 +141,31 @@ Figure 6: EU Money Supply M1 2007 – 2010
 - As shown in Figure 10, Y1 at first goes to Y3 due to the increase in government spending (G), and then Y3 goes lower to Y2 towards Y1 due to the crowding-out effect, a decrease in private investment (I). However, Y2 is still larger than Y1, the original output, which means that after the process, the increase in government expenditures has finally increased the output, stimulating the economic growth. This crowing-out effect could explain the fluctuations of economic indicators we have observed in part 2.2. 
 
 <p align="center">
-<img src="/images/AE.png" width = "280">          <img src="/images/money demand and interest rate.png" width = "280">
+<img src="/images/AE.png" width = "380">
+</p>
+<p align="center">
+Figure 7: Increased G Effect on Y
+</p>
+
+<p align="center">
+<img src="/images/money demand and interest rate.png" width = "410">
+</p>
+<p align="center">
+Figure 8: Money Demand & Interest Rate
+</p>
+
+<p align="center">
+<img src="/images/interest_rate.png" width = "320">
+</p>
+<p align="center">
+Figure 9: Increased Interest Rate Effect
+</p>
+
+<p align="center">
+<img src="/images/CIG.png" width = "470">
+</p>
+<p align="center">
+Figure 10: Crowding-out Effect
 </p>
 
 #### 3.3.2 Monetary Policies and Impacts
@@ -149,7 +173,7 @@ Figure 6: EU Money Supply M1 2007 – 2010
 - With the expansionary monetary policy, the money supply increases. According to Figure 11, the increase in money supply leads to a decrease in interest rate, encouraging investment to increase (by Figure 12), and as a result supporting the GDP to increase even more (Y=C+I+G). Then we have entered another turn of crowding-out circulation, which causes fluctuations.
 
 <p align="center">
-<img src="/images/proc1.png" width = "210"> <img src="/images/proc2.png" width = "210"> <img src="/images/proc3.png" width = "210">
+<img src="/images/Figure11.png" width = "300"> <img src="/images/Figure12.png" width = "300">
 </p>
 
 ## 4 Conclusion and Further Research Expectations
