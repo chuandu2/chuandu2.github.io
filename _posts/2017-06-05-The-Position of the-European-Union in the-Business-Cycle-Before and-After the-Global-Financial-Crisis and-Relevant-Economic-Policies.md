@@ -111,8 +111,8 @@ This is the research project for the Illinois-Austria (Vienna) Study Abroad Prog
 
 <p align="center">
 <img src="/images/procedure comparison.png" width = "500">
-Figure 6: EU Money Supply M1 2007 – 2010
 </p>
+Figure 6: EU Money Supply M1 2007 – 2010
 
 #### 3.3.1 Fiscal Policies and Impacts
 
