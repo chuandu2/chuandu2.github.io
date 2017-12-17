@@ -188,7 +188,7 @@ Figure 10: Crowding-out Effect
 
 [6] "GDP (current US$)." *The World Bank.* Ed. World Bank National Accounts Data. World Bank Group, 2012. Web. 01 June 2017.
 
-[7] "GDP per Capita Growth (annual %)." *GDP per Capita Growth (annual %) | Data.* Ed. The World Bank. World Bank Group, 2012. Web. 01 June 2017.
+[7] "GDP per Capita Growth (annual %)." *GDP per Capita Growth (annual %) Data.* Ed. The World Bank. World Bank Group, 2012. Web. 01 June 2017.
 
 [8] Eurostat. "Unemployment Rate." *Google.* Google, 1 June 2017. Web. 01 June 2017.
 "Subprime Mortgage Crisis." Wikipedia. Ed. Nick Moyes. Wikimedia Foundation, 29 May 2017. Web. 01 June 2017.
@@ -205,7 +205,7 @@ Figure 10: Crowding-out Effect
 
 [14] Anonymous. "Economic and Monetary Affairs." *European Union - European Commission.* European Union, 14 Nov. 2016. Web. 02 June 2017.
 
-[15] European Central Bank. "Euro Area Money Supply M1 1980-2017 | Data | Chart | Calendar | Forecast." *Euro Area Money Supply M1 | 1980-2017 | Data | Chart | Calendar | Forecast.* Trading Economics, Apr. 2017. Web. 02 June 2017.
+[15] European Central Bank. "Euro Area Money Supply M1 1980-2017 | Data | Chart | Calendar | Forecast." *Euro Area Money Supply M1 / 1980-2017 / Data / Chart / Calendar / Forecast.* Trading Economics, Apr. 2017. Web. 02 June 2017.
 
 [16] *Money Supply M1.* Digital image. *Trading Economics.* Federal Reserve, Mar. 2016. Web. 2 June. 2017.
 
