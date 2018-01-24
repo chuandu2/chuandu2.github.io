@@ -4,8 +4,12 @@ author: Chuan Du, Christopher Szul, Adarsh Manawa, Nima Rasekh, Rosemary Guzman,
 categories: Publication/Preprints
 ---
 
-<a href="https://chuandu2.github.io/images/dmt_vf_ms.pdf" target="_blank">Link to the Paper</a>
+[Link to the Paper][paper-link]
 
-<a href="https://chuandu2.github.io/images/jmm.pdf" target="_blank">Link to the Slides</a>
+[Link to the Slides][slide-link]
 
-<a href="https://github.com/redavids/IBTCDA/tree/master" target="_blank">Link to the Code on Github</a>
+[Link to the Code on Github][code-link]
+
+[paper-link]: https://chuandu2.github.io/images/dmt_vf_ms.pdf
+[slide-link]: https://chuandu2.github.io/images/jmm.pdf
+[code-link]:  https://github.com/redavids/IBTCDA/tree/master
