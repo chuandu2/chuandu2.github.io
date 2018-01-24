@@ -1,7 +1,7 @@
 ---
 title: "RGB image-based data analysis via discrete Morse theory and persistent homology"
 author: Chuan Du, Christopher Szul, Adarsh Manawa, Nima Rasekh, Rosemary Guzman, and Ruth Davidson
-categories: publications
+categories: project
 ---
 
 <a href="https://chuandu2.github.io/images/dmt_vf_ms.pdf" target="_blank">Link to the Paper</a>
