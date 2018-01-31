@@ -6,4 +6,4 @@ categories: Publications/Preprints
 
 [Link to the Paper][paper-link]
 
-[paper-link]: https://faculty.math.illinois.edu/~rasekh2/dmt_vf_ms.pdf
+[paper-link]: https://arxiv.org/pdf/1801.09530.pdf
