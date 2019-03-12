@@ -3,20 +3,20 @@ description: |
 
   **I am Chuan (Sophie), a big fan of science,**
   
-  **currently studying at Northwestern University, MS in Analytics and aiming to be a Data Scientist.**
+  **currently studying at Northwestern University, MS in Analytics and willing to become a Data Scientist.**
   
-  **It's a long way to go. I'm ready.**
+  **Still a long way to go, and I'm ready.**
 
 copyright: chuandu2
 sass:
   sass_dir: assets/sass
 url: http://localhost:4000
 disqus_shortname: 
-linkedin_username: "chuan-du-904954b4"
+linkedin_username: "chuan-sophie-du"
 github_username:  "chuandu2"
 instagram_username: "sophiechuanchuan_du"
 feed_icon: rss
-email: "cd2sophie831@gmail.com"
+email: "chuandu2019@u.northwestern.edu"
 gems: [jekyll-paginate]
 paginate_path: "/page/:num/"
 paginate: 5
